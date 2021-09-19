@@ -1,7 +1,4 @@
-/* Assignment: 2
-Campus: Beer-Sheva
-Author1: Orel Lavie, ID: 207632118
-Date:7/4 /2015 */
+
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Pile.h"
