@@ -1,0 +1,46 @@
+R is Reflexsive
+R is not irreflexsive
+R is Symmetric
+R is not AntiSymmetric
+R is not ASymmetric
+R is Transitive
+R is Equivalence
+Equivalence classes:
+1 
+2 4 6 
+3 5 
+Maxtrix of R:
+1 0 0 0 0 0 
+0 1 0 1 0 1 
+0 0 1 0 1 0 
+0 1 0 1 0 1 
+0 0 1 0 1 0 
+0 1 0 1 0 1 
+Maxtrix of R^2:
+1 0 0 0 0 0 
+0 1 0 1 0 1 
+0 0 1 0 1 0 
+0 1 0 1 0 1 
+0 0 1 0 1 0 
+0 1 0 1 0 1 
+Maxtrix of R^3:
+1 0 0 0 0 0 
+0 1 0 1 0 1 
+0 0 1 0 1 0 
+0 1 0 1 0 1 
+0 0 1 0 1 0 
+0 1 0 1 0 1 
+Maxtrix of R^Inf:
+1 0 0 0 0 0 
+0 1 0 1 0 1 
+0 0 1 0 1 0 
+0 1 0 1 0 1 
+0 0 1 0 1 0 
+0 1 0 1 0 1 
+Maxtrix of R*:
+1 0 0 0 0 0 
+0 1 0 1 0 1 
+0 0 1 0 1 0 
+0 1 0 1 0 1 
+0 0 1 0 1 0 
+0 1 0 1 0 1 
