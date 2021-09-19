@@ -3,7 +3,7 @@
 6
 2 2 2 4 2 6 4 2 4 4 4 6 6 2 6 4 6 6 1 1 3 5 5 5 5 3 3 3
 ## output ( output.txt )
-R is Reflexsive \n
+R is Reflexsive <br>
 R is not irreflexsive
 R is Symmetric
 R is not AntiSymmetric
