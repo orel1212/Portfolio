@@ -7,3 +7,5 @@
 
 ## How To Run
 run ./sources/main.cpp via c++ compiler/IDE <br>
+Subscription.txt -> for Subscription database  <br>
+SumShop.txt -> Sum of money per day database
