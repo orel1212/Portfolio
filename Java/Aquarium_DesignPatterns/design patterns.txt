@@ -1,0 +1,7 @@
+1. singleton - creating one worm as food
+2. abstract factory - abstract factory of the creatures (animal, plant)
+3. prototype - to duplicat the objects
+4. observer/listener - update the animals about the worm
+5. decorator - add functionallity like color chaning of the animals via tha panel
+6. mementoc - save last states of an animal, like color, coordinates in the aquarium, etc.
+7. state - change the state of the animal into hungry/satiated
