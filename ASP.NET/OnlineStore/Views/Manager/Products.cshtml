@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Products</title>
+</head>
+<body>
+    <div> 
+        <h1> <span style="color:#375a7f">Current Products:</span></h1>
+        <br />
+        <table id="ProductsTable" class="table table-striped table-hover ">
+            <colgroup>
+                <col style="width:50px">
+                <col style="width:70px">
+                <col style="width:72px">
+            </colgroup>
+            <tr>
+                <td>PID</td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Amount</td>
+            </tr>
+        </table>
+        <br />
+        <div id="TblStatus"></div>
+        <br />
+        <div id="msg"></div>
+    </div>
+</body>
+</html>
+<script language="javascript">
+    $("#TblStatus").text("Loading..");
+    $.ajax({//instead of $.get
+        url: '/Manager/GetProductsByJson',
+        data:{Msg:""},
+        success: BindData
+    });
+    function BindData(json) {
+        $("#ProductsTable").find("tr:gt(0)").remove();//delete all rows besides the first
+        var table = $("#ProductsTable");
+        for (i = 0; i < json.Products.length; i++) {
+            var row = "<tr>" +
+                "<td>" + json.Products[i].PID + "</td>" +
+                "<td>" + json.Products[i].Name + "</td>" +
+                "<td>" + json.Products[i].Price + "</td>" +
+                "<td>" + json.Products[i].Amount + "</td>" +
+                "</tr>";
+            table.append(row);
+        }
+        $("#TblStatus").text("");
+        if (json.msg != "")
+            alert(json.msg);
+    }
+</script>

@@ -1,0 +1,131 @@
+﻿@model Project.ViewModels.ProductsVM
+
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Order</title>
+</head>
+<body>
+    <h1><span style="color:#375a7f">Order Form:</span></h1>
+    <div style="color:blue" id="Status"></div>
+    <div> 
+        
+        <table class="table table-striped table-hover ">
+            <colgroup>
+                <col style="width:150px">
+                <col style="width:150px">
+            </colgroup>
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    Price:
+                </td>
+                <td>
+                    Amount:
+                </td>
+            </tr>
+            @foreach (var p in Model.existProducts)
+            {
+                <tr>
+                    <td>
+                        @p.Name
+                    </td>
+                    <td>
+                        @p.Price
+                    </td>
+                    <td>
+                        <input id="@p.PID" type="text" value="0" style="width: 60px;" />
+                    </td>
+                </tr>
+
+            }
+            <tr>
+                <td>
+                    Total:
+                </td>
+                <td>
+                    <input id="total" value="0" readonly="readonly" style="width: 60px;" />
+                </td>
+            <tr>
+                <td>
+                    <input type="button" value="Return" class="btn btn-primary btn-xs" onclick="@("window.location.href='" + @Url.Action("CustomerHome", "Customer") + "'");" />
+                </td>
+                <td>
+                    <input id="Submit" class="btn btn-primary btn-xs" type="button" value="Place Order" onclick="PostData()" />
+                </td>
+            </tr>
+        </table>
+            
+    </div>
+</body>
+</html>
+<script language="javascript">
+    var total = 0;
+    @for (int i = 0; i < Model.existProducts.Count;i++ )
+    {
+        @:var id =@Model.existProducts[i].PID
+        @:$('#' + id).on('keyup', function () {
+                                @:total = 0;
+                                for (int j = 0; j < Model.existProducts.Count;j++ )
+                                {
+                                     @: var amount = "";
+                                     @:amount = parseInt($('#' + @Model.existProducts[j].PID
+                                     @: +"").val());
+                                     @:if (!isInt(amount))
+                                           @: { alert("Amount fields must contain only positive numbers!"); $('#' + @Model.existProducts[j].PID
+                                           @: +"").val("0");
+                                           @:amount=0;}
+                                     @:if (amount < 0)
+                                           @: {alert("Amount fields must contain only positive numbers!"); $('#' + @Model.existProducts[j].PID
+                                           @: +"").val("0");
+                                           @:amount=0;}
+                                     @:var price =@Model.existProducts[j].Price
+
+                                     @:total += (parseFloat(price).toFixed(2) * amount);
+                                }
+                                 @:  $('#total').val(total);})
+                                }
+    var cart = new Object();
+
+    function isInt(value) {
+        var x;
+        if (isNaN(value)) {
+            return false;
+        }
+        x = parseInt(value);
+        return (x | 0) === x;
+    }
+    function PostData()//need to fix!
+    {
+        if (total > 0) {
+            $("#Status").text("Processing......");
+            var tabPom = document.getElementById("Submit");
+            $(tabPom).prop('disabled', true);
+            @for (int i = 0; i < Model.existProducts.Count;i++ )
+        {
+            @:var amount = 0;
+                                                 @:var id =@Model.existProducts[i].PID
+                                                 @:amount = parseInt($('#' + id).val());
+                                                  @:if (amount > 0)
+                                                               {
+                 @:cart[id] = amount;
+                                                   }
+        }
+            $.post("/Customer/Order", { cart: cart, total: total });
+            window.location.href = "/Customer/CustomerHome";
+        }
+        else
+            alert("You must choose at least 1 product!");
+    }
+</script>

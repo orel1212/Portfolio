@@ -1,0 +1,36 @@
+﻿
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>HomePage</title>
+</head>
+<h1 style="color:#375a7f">Menu:</h1>
+<table class="table table-striped table-hover ">
+    <colgroup>
+        <col style="width:190px">
+    </colgroup>
+    <tr>
+        <td>Login:</td>
+        <td><input type="button" value="Click Here" class="btn btn-primary btn-xs" onclick="@("window.location.href='" + @Url.Action("Authenticate", "User") + "'");" /></td>
+    </tr>
+    <tr>
+        <td>View Catalog & Join:</td>
+        <td><input type="button" id="join" value="Click Here" class="btn btn-default btn-xs" onload="CheckIfProductExists()" onclick="@("window.location.href='" + @Url.Action("Registration", "Home") + "'");" /></td>
+    </tr>
+</table>
+<script language="javascript">
+    $.ajax({//instead of $.get
+        url: '/Manager/GetProductsByJson',
+        data: { Msg: "" },
+        success: CheckIfProductExists
+    });
+    function CheckIfProductExists(json) {
+            if (json.Products.length == 0) {
+                alert('Sorry,The Catalog is currently on Maintenance!');
+                $("#join").prop('disabled', true);
+            }
+        }
+</script>

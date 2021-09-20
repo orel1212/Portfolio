@@ -1,0 +1,75 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>DeleteProduct</title>
+</head>
+<body>
+    <div>
+        @RenderPage("~/Views/Manager/Products.cshtml")
+        <h3><span style="color:#375a7f">Delete Product:</span></h3>
+
+        <table class="table table-striped table-hover ">
+            <colgroup>
+                <col style="width:190px">
+            </colgroup>
+            <tr>
+                <td>
+                    Select Product:
+                </td>
+                <td>
+                    <select id="ProductsSelect" style="color:gray"></select>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="Return" class="btn btn-primary btn-xs" onclick="@("window.location.href='" + @Url.Action("ManagerHome", "Manager") + "'");" />
+                </td>
+                <td>
+                    <input id="Submit" class="btn btn-primary btn-xs" type="button" value="Delete" onclick="PostData()" />
+                </td>
+            </tr>
+
+        </table>
+        <br />
+        <div id="DeleteStatus"></div>
+        <br />
+    </div>
+</body>
+</html>
+<script language="javascript">
+    $.get("GetProductsByJson", {Msg:""}, BindData);
+    function BindData(json)
+    {
+        var selected = $("#ProductsSelect")
+        for (i = 0; i < json.Products.length; i++)
+        {
+            var option;
+            if (i == 0)
+                option = "<option id=" + "''" + +json.Products[i].PID + "''" + " value=" + "''" + json.Products[i].PID + "''" + " selected=" + "''" + "selected" + "''" + ">" + json.Products[i].PID + "</option>";
+            else
+                option = "<option id=" + "''" + +json.Products[i].PID + "''" + " value=" + "''" + json.Products[i].PID + "''" + ">" + json.Products[i].PID + "</option>";
+            selected.append(option);
+        }
+    }
+    function PostData()
+    {
+        $("#DeleteStatus").text("Deleting Products....");
+        var sub = document.getElementById("Submit");
+        $(sub).prop('disabled', true);
+        var Data = document.getElementById("ProductsSelect");
+        Data=parseInt(Data.options[Data.selectedIndex].text);
+        $.post("/Manager/DeleteProduct", { pid: Data });
+        window.location.href = "/Manager/ManagerHome";
+    }
+</script>
+

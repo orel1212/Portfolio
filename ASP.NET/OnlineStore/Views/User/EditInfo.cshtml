@@ -1,0 +1,98 @@
+﻿@model Project.Models.Person
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Info Form</title>
+</head>
+<body>
+    <div>
+        <h1><span style="color:#375a7f">Edit Personal Information:</span></h1>
+        
+        <div id="AddStatus"></div>
+        <br />
+        <form id="editForm">
+            <table class="table table-striped table-hover ">
+                <colgroup>
+                    <col style="width:190px">
+                </colgroup>
+                <tr>
+                    <td>
+                        ID:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.ID, new { id = "id", @readonly = "readonly" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Name:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Name, new { name = "name" }) @Html.ValidationMessageFor(x => x.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Password:
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.Password, new { name = "password" }) @Html.ValidationMessageFor(x => x.Password)
+                    </td>
+                <tr>
+                    <td>
+                        <input type="button" value="Return" class="btn btn-primary btn-xs" onclick="@("window.location.href='" + @Url.Action(Model.Role + "Home", Model.Role) + "'");" />
+                    </td>
+                    <td>
+                        <input id="Submit" class="btn btn-primary btn-xs" type="button" value="Submit" onclick="PostData()" />
+                    </td>
+                </tr>
+
+            </table>
+
+        </form>
+    </div>
+</body>
+</html>
+<script language="javascript">
+
+    function PostData()
+    {
+        
+            $("#AddStatus").text("Saving....");
+            var tabPom = document.getElementById("Submit");
+            $(tabPom).prop('disabled', true);
+            var formData = $("#editForm").serialize();//step 1 and 2
+            $.ajax({ 
+                url: "EditInfo",
+                data:formData,
+                type: "post",
+                success: check
+                });
+            //$.post("EditInfo", formData, check);//step 3
+
+    }
+    function check(json)
+    {
+        if (json.msg == "") {
+            var href = "/" + json.role + "/" + json.role + "Home";
+            window.location.href = href;
+        }
+        else
+            alert(json.msg);
+        $("#Name").val("");
+        $("#Password").val("");
+        $("#AddStatus").text("");
+        var tabPom = document.getElementById("Submit");
+        $(tabPom).prop('disabled', false);
+    }
+</script>

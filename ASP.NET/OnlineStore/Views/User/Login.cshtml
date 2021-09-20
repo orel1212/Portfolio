@@ -1,0 +1,82 @@
+﻿@model Project.Models.User
+
+
+<!DOCTYPE html>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>LoginPage</title>
+</head>
+<body>
+    <div>
+        <h1 style="color:#375a7f">Login:</h1>
+        <form id="loginForm">
+            <table class="table table-striped table-hover ">
+                <colgroup>
+                    <col style="width:190px">
+                </colgroup>
+                <tr>
+                    <td>
+                        ID:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.ID,new { name = "id" }) @Html.ValidationMessageFor(x => x.ID)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Password:
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.Password, new { name = "password" }) @Html.ValidationMessageFor(x => x.Password)
+                    </td>
+                <tr>
+                    <td>
+                        <input type="button" class="btn btn-primary btn-xs" value="Return" onclick="@("window.location.href='" + @Url.Action("Home", "Home") + "'");" />
+                    </td>
+                    <td>
+                        <input id="Submit" class="btn btn-primary btn-xs" name="Submit" type="button" onclick="PostData()" value="Login" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+</div>
+</body>
+</html>
+<script language="javascript">
+    function PostData() {
+        var tabPom = document.getElementById("Submit");
+        $(tabPom).prop('disabled', true);
+        var formData = $("#loginForm").serialize();//step 1 and 2
+        $.post("/User/Authenticate", formData, check);
+    }
+    
+    function check(json) {
+        if (json.msg == "")
+        {
+            if(json.role=="Cashier")
+                window.location.href = "/Cashier/CashierHome";
+            else if (json.role == "Manager")
+                window.location.href = "/Manager/ManagerHome";
+            else
+                window.location.href = "/Customer/CustomerHome";
+        }
+            
+        else {
+            alert(json.msg);
+            var tabPom = document.getElementById("Submit");
+            $(tabPom).prop('disabled', false);
+        }
+        $("#Password").val("");
+    }
+
+
+
+</script>
+
+
+

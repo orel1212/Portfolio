@@ -1,0 +1,103 @@
+﻿@model Project.Models.Worker
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>AddWorker</title>
+</head>
+<body>
+         @RenderPage("~/Views/Manager/Workers.cshtml")
+        <h2><span style="color:#375a7f">Add Worker Form:</span></h2>
+        
+        <form id="regForm">
+            <table class="table table-striped table-hover ">
+                <colgroup>
+                    <col style="width:190px">
+                </colgroup>
+                <tr>
+                    <td>
+                        ID:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.ID, new { name = "id" }) @Html.ValidationMessageFor(x => x.ID)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Name:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Name, new { name = "name" }) @Html.ValidationMessageFor(x => x.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Password:
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.Password, new { name = "password" }) @Html.ValidationMessageFor(x => x.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Cashier:
+                    </td>
+                    <td>
+                        <input type="radio" name="worker" value="cashier" checked="checked" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Manager:
+                    </td>
+                    <td>
+                        <input type="radio" name="worker" value="manager" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="Return" class="btn btn-primary btn-xs" onclick="@("window.location.href='" + @Url.Action("ManagerHome", "Manager") + "'");" />
+                    </td>
+                    <td>
+                        <input id="Submit" type="button" class="btn btn-primary btn-xs" value="Submit" onclick="PostData()" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div id="AddStatus"></div>
+    <br />
+</body>
+</html>
+<script language="javascript">
+    function PostData()
+    {
+        if ($("#Name").val().length > 0 && $("#Password").val().length > 0 && $("#ID").val().length > 0) {
+            $("#AddStatus").text("Adding Worker....");
+            var sub = document.getElementById("Submit");
+            $(sub).prop('disabled', true);
+            var formData = $("#regForm").serialize();//step 1 and 2
+            $.post("AddWorker", formData, BindData);//step 3
+            $("#AddStatus").text("");
+            $(sub).prop('disabled', false);
+            
+        }
+        else
+            alert("You must fill all the fields!");
+        $("#ID").val("");
+        $("#Name").val("");
+        $("#Password").val("");
+    }
+    
+</script>
+
+
