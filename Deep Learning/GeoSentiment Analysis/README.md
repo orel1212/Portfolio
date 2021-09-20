@@ -8,6 +8,10 @@ The project includes 4 main components:
 - Flask-Python based Restful api that can search for live tweets and analyze them
 - An Angular app that uses the Restful api (client) 
 
+## Deep learning
+### Sentiment Analysis
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/bilstm.png)
+
 ## Dependencies
 ### Sentiment Analysis
 * Python 3.5.2
