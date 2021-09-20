@@ -3,13 +3,45 @@
 A Geosentiment Analysis tool implemented with TensorFlow which uses BiLSTM to train sentiment analysis and CNN to train the geolocation predictions of tweets.
 
 The project includes 4 main components:
-- Training a Sentiment Analysis model based on STS(Stanford Twitter Sentiment) corpus <a>http://www.sananalytics.com/lab/twitter-sentiment/</a>
-- Training a Geolocation prediction model based on W-NUT (Han et al., 2016) 
+- Training a Sentiment Analysis model based on STS(Stanford Twitter Sentiment) corpus
+- Training a Geolocation prediction model based on W-NUT 2016 (Han et al., 2016) 
 - Flask-Python based Restful api that can search for live tweets and analyze them
 - An Angular app that uses the Restful api (client) 
 
 ## Deep learning
 ### Sentiment Analysis
+#### Architecture
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/bilstm.png)
+#### Dataset
+ STS(Stanford Twitter Sentiment) corpus <a>http://www.sananalytics.com/lab/twitter-sentiment/</a><br>
+ 1.6M tweets -> 800k positive and 800k negative
+#### Word Embedding
+GloVe - trained on 2B tweets from twitter (1.2m is the size of the vocab)
+#### Training
+we used l2 norm and gradient clipping for mitigations.
+#### Test
+84.95% on real tweets from twitter (259 live tweets)
+
+### Geolocation Prediction
+#### Architecture
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/cnn.png)
+#### Dataset
+W-NUT 2016 (Han et al., 2016) <br>
+12.8M tweets -> only 8.1M tweets were available
+#### Word Embedding
+Word2Vec - trained on vector of size 300 features
+#### Training
+we used dropout regulator and gradient clipping for mitigations.
+#### Test
+91.47% on real tweets from twitter (3130 live tweets)
+
+## Angular for client
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/bilstm.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/bilstm.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/bilstm.png)
+
+### Coloroed Map and table for geosentiment statistics
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/bilstm.png)
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/bilstm.png)
 
 ## Dependencies
