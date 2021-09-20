@@ -51,9 +51,9 @@ we used dropout regulator and gradient clipping for mitigations.
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/table_statistics.png)
 
 ## Folder Tree
-deployment -> Flask + Gunicorn + Deployed models
-frontend -> Angular
-training -> geolocation + sentiment analysis tensorflow based training code
+deployment -> Flask + Gunicorn + Deployed models <br>
+frontend -> Angular <br>
+training -> geolocation + sentiment analysis tensorflow based training code <br>
 
 
 ## Dependencies
