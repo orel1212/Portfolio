@@ -1,7 +1,10 @@
 # Simple Asymmetric key MAC based on Python
 ## Based on RSA and SHA 256 
 
+## Architecture
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Python/AsymmetricKeyMAC/architecture.jpg)
 
+## Running example
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Python/AsymmetricKeyMAC/sender.jpg)
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Python/AsymmetricKeyMAC/reciever.jpg)
 
