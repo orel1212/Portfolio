@@ -20,9 +20,8 @@ running notebook of the code of the attack (pgd/weighted)
 ### defense.ipynb
 running notebook of the code of the defense (odm)
 
-\begin{equation}
- ODM_{SSM} = ODM(\alpha \cdot IMG_{input} + (1-\alpha) \cdot SSM_{output})
-\end{equation}
+## Method - ODM
+<a href="https://www.codecogs.com/eqnedit.php?latex=\begin{equation}&space;ODM_{SSM}&space;=&space;ODM(\alpha&space;\cdot&space;IMG_{input}&space;&plus;&space;(1-\alpha)&space;\cdot&space;SSM_{output})&space;\end{equation}" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\begin{equation}&space;ODM_{SSM}&space;=&space;ODM(\alpha&space;\cdot&space;IMG_{input}&space;&plus;&space;(1-\alpha)&space;\cdot&space;SSM_{output})&space;\end{equation}" title="\begin{equation} ODM_{SSM} = ODM(\alpha \cdot IMG_{input} + (1-\alpha) \cdot SSM_{output}) \end{equation}" /></a>
 
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/SSMODM/%E2%80%8F%E2%80%8Falpha.PNG)
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/SSMODM/%E2%80%8F%E2%80%8Fod_on_image.PNG)
