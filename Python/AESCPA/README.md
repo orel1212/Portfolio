@@ -10,3 +10,5 @@ aes_cpa-207632118.html, a running example
 ## How To Run
 run ./aes_cpa.py <br>
 trace-207632118-1G-4k.json file is needed ( power samples)
+
+## Written by Orel Lavie and Gil Fidel
