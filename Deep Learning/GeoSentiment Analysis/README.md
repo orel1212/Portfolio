@@ -10,6 +10,8 @@ The project includes 4 main components:
 
 ## Deep learning
 ### Sentiment Analysis
+#### Reference
+Hochreiter, Sepp, and Jürgen Schmidhuber. "Long short-term memory." Neural computation 9.8 (1997): 1735-1780.
 #### Architecture
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/bilstm.png)
 #### Dataset
@@ -23,6 +25,8 @@ we used l2 norm and gradient clipping for mitigations.
 84.95% on real tweets from twitter (259 live tweets)
 
 ### Geolocation Prediction
+#### Reference
+Huang, Binxuan, and Kathleen M. Carley. "On Predicting Geolocation of Tweets using Convolutional Neural Networks." arXiv preprint arXiv:1704.05146 (2017).
 #### Architecture
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/cnn.png)
 #### Dataset
