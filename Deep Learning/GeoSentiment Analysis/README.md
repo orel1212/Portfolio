@@ -46,9 +46,15 @@ we used dropout regulator and gradient clipping for mitigations.
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/demo_search.png)
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/hashtag_cloud.png)
 
-### Coloroed Map and table for geosentiment statistics
+### Colored Map and table for geosentiment statistics
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/map_statistics.png)
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/table_statistics.png)
+
+## Folder Tree
+deployment -> Flask + Gunicorn + Deployed models
+frontend -> Angular
+training -> geolocation + sentiment analysis tensorflow based training code
+
 
 ## Dependencies
 ### Sentiment Analysis
@@ -85,3 +91,5 @@ we used dropout regulator and gradient clipping for mitigations.
 * Flask-JWT-Extended
 * gunicorn
 * nltk
+
+## Made by Orel Lavie and Timor Satarov
