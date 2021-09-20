@@ -1,0 +1,44 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <h1 class="text-center">Statistics</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button type="button" class="btn btn-primary pull-right" (click)="downloadStatsAsJson()">Download statistics as json</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">           
+            <div class="pre-scrollable">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Total Tweets</th>
+                        <th>Positive Tweets</th>
+                        <th>Negative Tweets</th>
+                        <th>Average sentiment</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let country of countryStats" (click)="onClickCountry(country.countryCode)">
+                            <td>{{ country.countryName | titlecase }}</td>
+                            <td>{{ country.totalTweets }}</td>
+                            <td>{{ country.positiveTweets }}</td>
+                            <td>{{ country.negativeTweets }}</td>
+                            <td>{{ country.avgSentiment }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

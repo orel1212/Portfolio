@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+          <div class="jumbotron">
+                  <h1>Visualization</h1>      
+                  <p>Here you can see some Visualization options</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+      <div class="progress" *ngIf="isLoading">
+          <div class="progress-bar progress-bar-striped active" role="progressbar"
+          [ngStyle]="{'width.%': barPercentage}">
+            {{ barPercentage }}%
+          </div>
+      </div>
+      <div class="alert alert-warning" *ngIf="isError">
+        <strong>Attention!</strong> {{errorMsg}}
+        <p>Please try again later!</p>
+      </div>
+      <div class="alert alert-warning" *ngIf="notFoundTweets">
+          <strong>Attention!</strong> tweets not found according to your latest search.
+      </div>
+      <div *ngIf="!isError && !notFoundTweets &&isSubcribeExecuted">
+      <label>Total tweets found: {{ numberOfTweets }}</label>
+      <br>
+      <label >Date range: {{ minDate | date:'medium' }} - {{ maxDate | date:'medium' }}</label>
+      <br>
+      <label >Search: {{searchTerm}}</label>
+    </div>
+      <div class="dropdown" [class.show]="collapse">
+        <button class="btn btn-primary dropdown-toggle"  (click)="toggleCollapse()" [disabled]="isError || isLoading || notFoundTweets">Options
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu"  [class.show]="collapse">
+          <li><a class="dropdown-item" (click)="toggleCollapse()" [routerLink]="['./map']">Map</a></li>
+          <li><a class="dropdown-item" (click)="toggleCollapse()" [routerLink]="['./statistics']">Stats</a></li>
+          <li><a class="dropdown-item" (click)="toggleCollapse()" [routerLink]="['./date-graph']">Graph Dates</a></li>
+          <li><a class="dropdown-item" (click)="toggleCollapse()" [routerLink]="['./word-cloud']">Word Cloud</a></li>
+          <li><a class="dropdown-item" (click)="toggleCollapse()" [routerLink]="['./hashtag-cloud']">Hashtag Cloud</a></li>
+          <li><a class="dropdown-item" (click)="toggleCollapse()" [routerLink]="['./lang-cloud']"  [queryParams]="{country: 'all'}">Language Cloud</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

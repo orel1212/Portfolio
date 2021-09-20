@@ -1,0 +1,117 @@
+
+<a class="list-group-item list-group-item-action list-group-item-info"><strong><h4>{{title}}</h4></strong></a>
+<div class="list-group pre-scrollable">
+    <a class="list-group-item"><p><strong>URL</strong></p><br><strong><code>{{url}}</code> </strong></a>
+    <a class="list-group-item"> <p><strong>Method</strong></p><br><strong><code>{{method}}</code></strong></a>
+    <a class="list-group-item">  <p><strong>Headers</strong></p><br>
+        <div *ngIf="headers.length>0">
+            <p><strong>Required:</strong></p>
+            <p *ngFor="let param of headers"><strong>{{param['name']}}=<code>{{[param['value']]}}</code></strong></p>
+        </div>
+        <div *ngIf="headers.length===0">
+            <p><strong>None</strong></p>
+        </div>
+      </a>
+    <a class="list-group-item">  <p><strong>URL Params</strong></p><br>
+      <div *ngIf="urlParams.length>0">
+          <p><strong>Required:</strong></p>
+          <p *ngFor="let param of urlParams"><strong>{{param['name']}}=<code>{{[param['type']]}}</code></strong></p>
+      </div>
+      <div *ngIf="urlParams.length===0">
+          <p><strong>None</strong></p>
+      </div>
+    </a>
+    <a class="list-group-item">  <p><strong>Header Params</strong></p><br>
+        <div *ngIf="headerParams.length>0">
+            <p><strong>Required:</strong></p>
+            <p *ngFor="let param of headerParams"><strong>{{param['name']}}=<code>{{[param['type']]}}</code></strong></p>
+        </div>
+        <div *ngIf="headerParams.length===0">
+            <p><strong>None</strong></p>
+        </div>
+      </a>
+    <a class="list-group-item">  <p><strong>Data Params</strong></p><br>
+      <div *ngIf="dataParams.length>0">
+          <p><strong>Required:</strong></p>
+          <p *ngFor="let param of urlParams"><strong>{{param['name']}}=<code>{{[param['type']]}}</code></strong></p>
+      </div>
+      <div *ngIf="dataParams.length===0 && docType!=='VerifyCode'">
+          <p><strong>None</strong></p>
+      </div>
+      <div *ngIf="docType==='VerifyCode'">
+            {{'{'}}
+            <strong><code>
+                  request_url:url</code></strong>
+            <br>
+              <strong><code>
+                      request_token:Oauth_Object</code></strong>
+                      <br>
+              <strong><code>
+                  verifier_code:string</code></strong>
+              {{'}'}}
+              <br>
+              <strong> Oauth_Object Format:<p>
+                      <code>
+                      oauth_callback_confirmed:boolean<br>
+                      oauth_token:random_token<br>
+                      oauth_token_secret:random_token
+                      <br>
+                      </code>
+              </p></strong>
+      </div>
+    </a>
+    <a class="list-group-item"> <p><strong>Success Response</strong></p><br>
+      <ul> 
+          <li *ngIf="docType!=='Auth' && docType!=='VerifyCode'">
+              {{'{'}}
+              <strong><code>
+                  {{successResponse['name']}}:<br>{{successResponse['content']}}</code></strong>
+              {{'}'}}
+              <br>
+              <strong> Format:<p [innerHtml]="successResponse['listItemFormat']"></p></strong>
+          </li>
+          <li *ngIf="docType==='Auth'">
+              {{'{'}}
+              <strong><code>
+                    request_url:url</code></strong>
+              <br>
+                <strong><code>
+                        request_token:Oauth_Object</code></strong>
+                {{'}'}}
+                <br>
+                <strong> Oauth_Object Format:<p>
+                        <code>
+                        oauth_callback_confirmed:boolean<br>
+                        oauth_token:random_token<br>
+                        oauth_token_secret:random_token
+                        <br>
+                        </code>
+                </p></strong>
+            </li>
+            <li *ngIf="docType==='VerifyCode'">
+                    {{'{'}}
+                    <strong><code>
+                            message:Authentication Success</code></strong>
+                    <br>
+                    <strong><code>
+                            access_token:access_token_jwt</code></strong>
+                    <br>
+                    <strong><code>
+                            refresh_token:refresh_token_jwt</code></strong>
+                    {{'}'}}
+                  </li>
+      </ul>
+    </a>
+    <a class="list-group-item"> <p><strong>Error Response</strong></p><br>
+      <ul> 
+          <li *ngFor="let errorObj of errorResponses">
+              {{'{'}}
+              <strong>code:  {{errorObj['errorCode']}}, <br>
+              message:  <code> {{errorObj['errorMsg']}}</code></strong>
+              {{'}'}}
+          </li>
+      </ul>   
+    </a> 
+   
+</div>
+

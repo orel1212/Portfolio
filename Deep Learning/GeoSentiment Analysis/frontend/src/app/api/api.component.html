@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+          <div class="jumbotron">
+                  <h1>API Documentation</h1>
+                  <h2><strong>The endpoints supported by the API are documented here</strong></h2> 
+                  <h3><strong>Domain:</strong>  {{domain}}</h3>
+                  <h3><strong>Protocol:</strong>  {{protocol}}</h3>
+                  <h3><strong>Port:</strong>  {{port}}</h3>
+                  
+          </div>
+      </div>
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+          <app-api-inner-template docType="Predictions"></app-api-inner-template>
+        </div>
+      
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12">
+          <app-api-inner-template docType="Trends"></app-api-inner-template>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12">
+          <app-api-inner-template docType="demoPredictions"></app-api-inner-template>
+        </div>
+      
+    </div>
+   
+    <hr>
+    
+    
+  <div class="row">
+      <div class="col-xs-12">
+        <app-api-inner-template docType="demoTrends"></app-api-inner-template>
+      </div>
+    
+  </div>
+  <hr>
+    
+  <div class="row">
+      <div class="col-xs-12">
+        <app-api-inner-template docType="Auth"></app-api-inner-template>
+      </div>
+    
+  </div>
+  <hr>
+  <div class="row">
+        <div class="col-xs-12">
+          <app-api-inner-template docType="VerifyCode"></app-api-inner-template>
+        </div>
+      
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12">
+          <app-api-inner-template docType="refreshToken"></app-api-inner-template>
+        </div>
+      
+    </div>
+</div>

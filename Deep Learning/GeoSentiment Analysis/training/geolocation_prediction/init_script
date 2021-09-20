@@ -1,0 +1,23 @@
+#!/bin/bash
+
+mkdir -p datasets/wnut
+mkdir -p word_embeddings/word2vec/wnut
+mkdir -p saved_models/train
+mkdir -p saved_models/valid
+mkdir -p serving/
+
+
+
+filename="GoogleNews-vectors-negative300.bin.gz"
+fileid="0B7XkCwpI5KDYNlNUTTlSS21pQmM"
+
+curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
+curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
+
+mv GoogleNews-vectors-negative300.bin.gz word_embeddings/word2vec/
+gunzip word_embeddings/word2vec/GoogleNews-vectors-negative300.bin.gz
+
+#tensorflow_model_server --port=9000 --model_name=example_model --model_base_path=/home/timor/project/geosentiment_analysis/sentiment_analysis/serving &> my_log &
+#INSTALL A NEWER TENSORFLOW SERVING VERSION ON THE SERVER https://www.tensorflow.org/serving/setup
+#INSTALL THE MISSING DEPS https://github.com/tensorflow/serving/issues/819
+#/usr/bin/tensorflow_model_server --port=9000 --model_name=example_model --model_base_path=/home/ubuntu/project/geosentiment_analysis/sentiment_analysis/serving

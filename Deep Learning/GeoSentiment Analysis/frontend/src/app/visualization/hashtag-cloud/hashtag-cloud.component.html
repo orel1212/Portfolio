@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+          <h1 class="text-center" >Hashtag Cloud</h1>
+      </div>
+  </div>
+</div>
+<div *ngIf="!finishedCalculations" class="loader col-xs-4 col-xs-offset-3 col-lg-7 col-lg-offset-6 col-sm-6 col-sm-offset-5 col-md-5 col-md-offset-5" ></div>
+<div class="container" *ngIf="finishedCalculations">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-12" >
+          <div *ngIf="!noHashtagsFound">
+              <angular-tag-cloud class="custom-css"
+              [data]="data"
+              [width]="options.width"
+              [height]="options.height"
+              [overflow]="options.overflow">
+            </angular-tag-cloud>
+          </div>
+          <div class="alert alert-warning" *ngIf="noHashtagsFound">
+              <strong>Attention!</strong> no Hashtags found.
+          </div>
+          
+        </div>
+    </div>
+  </div>

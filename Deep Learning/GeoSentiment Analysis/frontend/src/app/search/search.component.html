@@ -1,0 +1,134 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="jumbotron">
+                <div *ngIf="mode==='online'">
+                        <h1>Online Search</h1>      
+                        <p>Real Time search via Twitter server</p>
+                </div>
+                <div *ngIf="mode==='demo'">
+                        <h1>Demo Search</h1>      
+                        <p *ngIf="mode==='demo'">Search in local saved tweets that were gathered in advance</p>
+                        <p *ngIf="mode==='demo'">Only hashtags are supported!</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-xs-12">
+        <a class="list-group-item list-group-item-action list-group-item-info">Search Guidelines</a>
+        <div [ngClass]="{'pre-scrollable': mode==='online'}">
+            <table class="table table-striped">
+                <thead>
+                    <tr><th>Operator</th>
+                    <th>Explanation</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="mode==='demo'">
+                        <tr><td>#love</td>
+                            <td>containing hashtag “#love” </td>
+                        </tr>
+                    <tr><td>#watching #now</td>
+                    <td>containing both “#watching” and “#now”. <br>*This is the default operator.</td>
+                    </tr><tr><td>#love OR #hate</td>
+                    <td>containing either “#love” or “#hate” (or both).</td>
+                    </tr></tbody>
+                <tbody *ngIf="mode==='online'"><tr><td>watching now</td>
+                <td>containing both “watching” and “now”. <br>*This is the default operator.</td>
+                </tr><tr><td>“happy hour”</td>
+                <td>containing the exact phrase “happy hour”.</td>
+                </tr><tr><td>love OR hate</td>
+                <td>containing either “love” or “hate” (or both).</td>
+                </tr><tr><td>beer -root</td>
+                <td>containing “beer” but not “root”.</td>
+                </tr><tr><td>#haiku</td>
+                <td>containing the hashtag “haiku”.</td>
+                </tr><tr><td>from:interior</td>
+                <td>sent from Twitter account “interior”.</td>
+                </tr><tr><td>list:NASA/astronauts-in-space-now</td>
+                <td>sent from a Twitter account in the NASA list astronauts-in-space-now</td>
+                </tr><tr><td>to:NASA</td>
+                <td>a Tweet authored in reply to Twitter account “NASA”.</td>
+                </tr><tr><td>@NASA</td>
+                <td>mentioning Twitter account “NASA”.</td>
+                </tr><tr><td>politics filter:safe</td>
+                <td>containing “politics” with Tweets marked as potentially sensitive removed.</td>
+                </tr><tr><td>puppy filter:media</td>
+                <td>containing “puppy” and an image or video.</td>
+                </tr><tr><td>puppy -filter:retweets</td>
+                <td>containing “puppy”, filtering out retweets</td>
+                </tr><tr><td>puppy filter:native_video</td>
+                <td>containing “puppy” and an uploaded video, Amplify video, Periscope, or Vine.</td>
+                </tr><tr><td>puppy filter:periscope</td>
+                <td>containing “puppy” and a Periscope video URL.</td>
+                </tr><tr><td>puppy filter:vine</td>
+                <td>containing “puppy” and a Vine.</td>
+                </tr><tr><td>puppy filter:images</td>
+                <td>containing “puppy” and links identified as photos, including third parties such as Instagram.</td>
+                </tr><tr><td>puppy filter:twimg</td>
+                <td>containing “puppy” and a pic.twitter.com link representing one or more photos.</td>
+                </tr><tr><td>hilarious filter:links</td>
+                <td>containing “hilarious” and linking to URL.</td>
+                </tr><tr><td>puppy url:amazon</td>
+                <td>containing “puppy” and a URL with the word “amazon” anywhere within it.</td>
+                </tr><tr><td>superhero since:2015-12-21</td>
+                <td>containing “superhero” and sent since date “2015-12-21” (year-month-day).</td>
+                </tr><tr><td>puppy until:2015-12-21</td>
+                <td>containing “puppy” and sent before the date “2015-12-21”.</td>
+                </tr><tr><td>movie -scary :)</td>
+                <td>containing “movie”, but not “scary”, and with a positive attitude.</td>
+                </tr><tr><td>flight :(</td>
+                <td>containing “flight” and with a negative attitude.</td>
+                </tr><tr><td>traffic ?</td>
+                <td>containing “traffic” and asking a question.</td>
+                </tr></tbody>
+            </table>
+        </div>
+        <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="searchInput">Text input:</label>
+                <input
+                    id="searchInput" 
+                    type="text" 
+                    class="form-control" 
+                    aria-describedby="searchInput" 
+                    placeholder="Enter text here"
+                    formControlName="searchInput">
+                    <span class="help-block" *ngIf="searchForm.get('searchInput').errors && (searchForm.get('searchInput').dirty || searchForm.get('searchInput').touched)">
+                            <p *ngIf="searchForm.get('searchInput').errors.required">Required</p>
+                            <p *ngIf="searchForm.get('searchInput').errors.pattern">Input must match the regex</p>
+                    </span>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+        <a *ngIf="mode==='online'" class="list-group-item list-group-item-action list-group-item-info">Trending Hashtags</a>
+        <a *ngIf="mode==='demo'" class="list-group-item list-group-item-action list-group-item-info">Trending Selected Hashtags</a>
+        <div *ngIf="!isLoadingTrends && isTrendsAvailable">
+            <div id="trends" class="list-group pre-scrollable">
+                <a class="list-group-item" (click)="onClick(i)" *ngFor="let hashtag of trendingHashtags; let i=index;" [class.active]="isSelected(i)">{{ hashtag }}</a>
+            </div>
+            <button 
+                class="btn btn-primary" 
+                routerLink="/visualization" 
+                (click)="getPredictionsBySelectedHashtag()"
+                [disabled]="selectedIndex === -1 ? true : false">
+                Search
+            </button>
+        </div>
+        <div class="alert alert-warning" *ngIf="!isLoadingTrends && !isTrendsAvailable ">
+            <strong>Attention!</strong> {{errorMsg}}
+            <p>Please try again later!</p>
+        </div>
+        <div class="loader col-xs-4 col-xs-offset-3 col-lg-7 col-lg-offset-5 col-sm-6 col-sm-offset-4 col-xs-12" *ngIf="isLoadingTrends"></div>
+    </div>
+  </div>
+</div>
+
+
+

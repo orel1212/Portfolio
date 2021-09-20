@@ -1,0 +1,21 @@
+#!/bin/bash
+
+mkdir -p datasets/sentiment140
+mkdir -p word_embeddings/GloVe/sentiment140
+mkdir -p saved_models/train
+mkdir -p saved_models/valid
+mkdir -p serving/
+
+
+wget -P word_embeddings/GloVe/ http://nlp.stanford.edu/data/glove.twitter.27B.zip
+wget -P datasets/sentiment140/ http://cs.stanford.edu/people/alecmgo/trainingandtestdata.zip
+
+unzip word_embeddings/GloVe/glove.twitter.27B.zip -d word_embeddings/GloVe/
+unzip datasets/sentiment140/trainingandtestdata.zip -d datasets/sentiment140/
+
+
+
+#tensorflow_model_server --port=9000 --model_name=sentiment_model --model_base_path=/home/timor/project/geosentiment_analysis/training/sentiment_analysis/serving &> my_log &
+#INSTALL A NEWER TENSORFLOW SERVING VERSION ON THE SERVER https://www.tensorflow.org/serving/setup
+#INSTALL THE MISSING DEPS https://github.com/tensorflow/serving/issues/819
+#/usr/bin/tensorflow_model_server --port=9000 --model_name=example_model --model_base_path=/home/ubuntu/project/geosentiment_analysis/sentiment_analysis/serving

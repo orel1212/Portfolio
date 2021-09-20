@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+          <div class="jumbotron">
+                  <h1>Login</h1>    
+                  <h3>Please login to your Tweeter account in order to use your search token!</h3>
+                  <h3>Read the instructions below to finish the registration process.</h3>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+        <div class="alert alert-warning" *ngIf="!isLoadingURL && url===undefined">
+          <p><strong>Attention!</strong> {{errorMsg}} </p>
+          <p>Please try again later!</p>
+        </div>
+        <div class="row" *ngIf="!isLoadingURL && url!==undefined">
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <strong><h4>Instructions:</h4></strong>
+                <ol>
+            
+                    <li>
+                        Click <a [href]="url" target="_blank">here</a> to get verifier code
+                    </li>
+                    <li>
+                        Login to Twitter in the openned tab
+                    </li>
+                    <li>
+                        Copy the code to the input below
+                        </li>
+                        <li>
+                            Click Login
+                        </li>
+                    
+                </ol>
+                <form [formGroup]="verifierCodeForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="codeInput">Verifier code input:</label>
+                    <input
+                        id="codeInput" 
+                        type="text" 
+                        class="form-control" 
+                        aria-describedby="codeInput" 
+                        placeholder="Enter verifier code here"
+                        formControlName="codeInput">
+                        <span class="help-block" *ngIf="verifierCodeForm.get('codeInput').errors && (verifierCodeForm.get('codeInput').dirty || verifierCodeForm.get('codeInput').touched)">
+                                <p *ngIf="verifierCodeForm.get('codeInput').errors.required">Required</p>
+                                <p *ngIf="verifierCodeForm.get('codeInput').errors.pattern">Input must contain just digits</p>
+                        </span>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <div class="alert alert-warning" *ngIf="isCodeError">
+                <p><strong>Attention!</strong> {{errorMsg}} </p>
+                <p>Please go back to the first step and get another code!</p>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+ 

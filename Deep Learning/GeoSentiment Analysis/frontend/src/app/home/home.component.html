@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="jumbotron">
+                    <h1>Geosentiment Analysis</h1>      
+                    <p>Welcome to our geosentiment analysis final project</p>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <a class="list-group-item list-group-item-action list-group-item-info">Online Mode Guidelines</a>
+                    <div class="list-group">
+                        <a class="list-group-item"><strong>Real Time search from twitter server</strong></a>
+                        <a class="list-group-item"><strong>various search options</strong></a>
+                    </div>
+                    <div class="row">
+                        <div class=" col-xs-12">
+                            <button class="btn btn-primary btn-lg" routerLink="/search" [queryParams]="{mode: 'online'}">Online mode</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <a class="list-group-item list-group-item-action list-group-item-info">Demo Mode Guidelines</a>
+                    <div class="list-group">
+                        <a class="list-group-item"><strong>local saved tweets that were gathered in advance</strong></a>
+                        <a class="list-group-item"><strong>has fewer search options</strong></a>
+                    </div>
+                    <div class="row">
+                        <div class=" col-xs-12"> 
+                            <button class="btn btn-primary btn-lg" routerLink="/search" [queryParams]="{mode: 'demo'}">Demo mode</button>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </div>
+    </div>
+</div>
+
+
+    

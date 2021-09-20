@@ -1,0 +1,6 @@
+/* General Layout */
+@media all and (min-width:320px) and (max-width: 425px){
+    angular-tag-cloud.custom-css {
+        font-size: 50%;
+    }
+}

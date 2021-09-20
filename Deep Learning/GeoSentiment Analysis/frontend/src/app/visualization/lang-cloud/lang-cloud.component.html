@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+          <h1 class="text-center" *ngIf="country==='all'">Language Cloud : Worldwide </h1>
+          <h1 class="text-center" *ngIf="country!=='all'">Language Cloud : {{country | countryConvert}}</h1>
+      </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+        <angular-tag-cloud class="custom-css"
+        [data]="data"
+        [width]="options.width"
+        [height]="options.height"
+        [overflow]="options.overflow">
+      </angular-tag-cloud>
+      </div>
+  </div>
+</div>
