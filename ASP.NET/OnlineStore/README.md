@@ -10,7 +10,7 @@
 8. Product <br> and more.
 
 ## Uses Routes, Models, Model binders, Views, Controllers and LINQ for DB querying
-## Vanilla JS, Ajax, C#..
+## Vanilla JS, Ajax, C#, HTML + CSS Bootstrap, etc..
 
 
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/ASP.NET/OnlineStore/%E2%80%8F%E2%80%8FMainmenu.PNG)
