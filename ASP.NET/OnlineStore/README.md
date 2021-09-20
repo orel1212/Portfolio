@@ -13,9 +13,9 @@
 ## Vanilla JS, Ajax, C#..
 
 
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Java/Aquarium_DesignPatterns/%E2%80%8F%E2%80%8Faquarium.PNG)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Java/Aquarium_DesignPatterns/%E2%80%8F%E2%80%8Finfo.PNG)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Java/Aquarium_DesignPatterns/%E2%80%8F%E2%80%8Finfo.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/ASP.NET/OnlineStore/%E2%80%8F%E2%80%8FMainmenu.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/ASP.NET/OnlineStore/login.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/ASP.NET/OnlineStore/%E2%80%8F%E2%80%8Fcatalog_register.PNG)
 
 
 ## How To Run
