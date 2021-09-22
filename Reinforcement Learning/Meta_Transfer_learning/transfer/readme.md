@@ -3,7 +3,7 @@
 2. 'CartPole-v1' -> 'Acrobot-v1' -> 'MountainCarContinuous-v0' <br>
 
 ## Architecture
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/transfer/%E2%80%8F%E2%80%8Fprogressive_networks.PNG)
 to make the convergence work, we built the architecture as a  <br>
 progressive network. First we train the first model, and then use the result as an input to  <br>
 the second model. We then use both models as an input to the third model layers. For  <br>
@@ -13,12 +13,12 @@ use them both as an input to the cartpole layers.  <br>
 
 ## Results
 1. 'Acrobot-v1' -> 'MountainCarContinuous-v0' -> 'CartPole-v1' <br>
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/transfer/acrobot_mountain_car_to_%E2%80%8F%E2%80%8Fcartpole.PNG)
 2. 'CartPole-v1' -> 'Acrobot-v1' -> 'MountainCarContinuous-v0' <br>
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/transfer/%E2%80%8F%E2%80%8Fcartpole_acrobot_to_mountain_car.PNG)
 
 ### Comparison with base results
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/transfer/%E2%80%8F%E2%80%8Fcomparison.PNG)
 We can see that the convergence was faster in both models, but not significantly faster <br>
 in MountainCarContinuous-v0. The transfer learning however did improve the training <br>
 and it took the models less episode in order to reach convergence. <br>
