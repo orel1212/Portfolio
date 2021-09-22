@@ -40,15 +40,15 @@ we used dropout regulator and gradient clipping for mitigations.
 91.47% on real tweets from twitter (3130 live tweets)
 
 ## Angular for client
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/main.png)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/login.png)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/online_search.png)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/demo_search.png)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/hashtag_cloud.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Angular%20%2B%20Flask%20%2B%20Deep%20Learning/GeoSentiment%20Analysis/main.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Angular%20%2B%20Flask%20%2B%20Deep%20Learning/GeoSentiment%20Analysis/login.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Angular%20%2B%20Flask%20%2B%20Deep%20Learning/GeoSentiment%20Analysis/online_search.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Angular%20%2B%20Flask%20%2B%20Deep%20Learning/GeoSentiment%20Analysis/demo_search.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Angular%20%2B%20Flask%20%2B%20Deep%20Learning/GeoSentiment%20Analysis/hashtag_cloud.png)
 
 ### Colored Map and table for geosentiment statistics
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/map_statistics.png)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/table_statistics.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Angular%20%2B%20Flask%20%2B%20Deep%20Learning/GeoSentiment%20Analysis/map_statistics.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Angular%20%2B%20Flask%20%2B%20Deep%20Learning/GeoSentiment%20Analysis/table_statistics.png)
 
 ## Folder Tree
 deployment -> Flask + Gunicorn + Deployed models <br>
