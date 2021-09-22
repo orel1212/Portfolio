@@ -13,7 +13,7 @@ The project includes 4 main components:
 #### Reference
 Hochreiter, Sepp, and Jürgen Schmidhuber. "Long short-term memory." Neural computation 9.8 (1997): 1735-1780.
 #### Architecture
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/bilstm.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Angular%20%2B%20Flask%20%2B%20Deep%20Learning/GeoSentiment%20Analysis/bilstm.png)
 #### Dataset
  STS(Stanford Twitter Sentiment) corpus <a>http://www.sananalytics.com/lab/twitter-sentiment/</a><br>
  1.6M tweets -> 800k positive and 800k negative
@@ -28,7 +28,7 @@ we used l2 norm and gradient clipping for mitigations.
 #### Reference
 Huang, Binxuan, and Kathleen M. Carley. "On Predicting Geolocation of Tweets using Convolutional Neural Networks." arXiv preprint arXiv:1704.05146 (2017).
 #### Architecture
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/GeoSentiment%20Analysis/cnn.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Angular%20%2B%20Flask%20%2B%20Deep%20Learning/GeoSentiment%20Analysis/cnn.png)
 #### Dataset
 W-NUT 2016 (Han et al., 2016) <br>
 12.8M tweets -> only 8.1M tweets were available
