@@ -4,11 +4,10 @@
 
 ## Architecture
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/transfer/%E2%80%8F%E2%80%8Fprogressive_networks.PNG) <br>
-Tp make the convergence work, we built the architecture as a  <br>
-progressive network. First we train the first model, and then use the result as an input to  <br>
-the second model. We then use both models as an input to the third model layers. For  <br>
-example, {acrobot, mountainCar}->cartpole means, we first train the acrobot model,  <br>
-then use the trained acrobot layers output as an input to train mountainCar, and then  <br>
+Tp make the convergence work, we built the architecture as a progressive network.   <br>
+First we train the first model, and then use the result as an input to the second model.  <br>We then use both models as an input to the third model layers.   <br>For
+example, {acrobot, mountainCar}->cartpole means, we first train the acrobot model, 
+then use the trained acrobot layers output as an input to train mountainCar,  <br> and then
 use them both as an input to the cartpole layers.  <br>
 
 ## Results
@@ -19,8 +18,8 @@ use them both as an input to the cartpole layers.  <br>
 
 ### Comparison with base results
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/transfer/%E2%80%8F%E2%80%8Fcomparison.PNG) <br>
-We can see that the convergence was faster in both models, but not significantly faster <br>
-in MountainCarContinuous-v0. The transfer learning however did improve the training <br>
+We can see that the convergence was faster in both models, but not significantly faster
+in MountainCarContinuous-v0.   <br>The transfer learning however did improve the training
 and it took the models less episode in order to reach convergence. <br>
 
 ## Files
