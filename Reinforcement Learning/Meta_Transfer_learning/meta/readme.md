@@ -4,14 +4,12 @@
 
 ## Results
 1. 'Acrobot-v1' -> 'CartPole-v1' <br>
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
-2. 'Acrobot-v1' <br>
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
-3. 'CartPole-v1' ->'MountainCarContinuous-v0' <br>
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/meta/%E2%80%8F%E2%80%8Facrobot_cartpole.PNG)
+2. 'CartPole-v1' ->'MountainCarContinuous-v0' <br>
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/meta/%E2%80%8F%E2%80%8Fcartpole_mountain_car.PNG)
 
 ### Comparison with base results
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/meta/%E2%80%8F%E2%80%8Fcomparison.PNG)
 We can see that the fine tuning led to a faster convergence. The convergence was  <br>
 significantly faster in terms of running times in both models. It also took the models less  <br>
 episodes in order to reach convergence. MountainCarContinuous-v0 convergence was  <br>
