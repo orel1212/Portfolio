@@ -9,7 +9,7 @@
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/meta/%E2%80%8F%E2%80%8Fcartpole_mountain_car.PNG)
 
 ### Comparison with base results
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/meta/%E2%80%8F%E2%80%8Fcomparison.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/meta/%E2%80%8F%E2%80%8Fcomparison.PNG) <br>
 We can see that the fine tuning led to a faster convergence. The convergence was  <br>
 significantly faster in terms of running times in both models. It also took the models less  <br>
 episodes in order to reach convergence. MountainCarContinuous-v0 convergence was  <br>
