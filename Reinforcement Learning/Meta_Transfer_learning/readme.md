@@ -1,4 +1,4 @@
-# Base, Meta and Transfer learning actor-critic algorithm for 3 gym enviroments
+# Base, Meta and Transfer learning actor-critic algorithms for 3 gym enviroments
 1. 'Acrobot-v1' <br>
 2. 'CartPole-v1' <br>
 3. 'MountainCarContinuous-v0' <br>
