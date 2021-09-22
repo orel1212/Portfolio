@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="jumbotron">
+                <div>
+                        <h1>Add URLs & IPs</h1>      
+                        <p>Request to add URLs & IPs to the whitelist</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-xs-12">
+            <a class="list-group-item list-group-item-action list-group-item-info">URL & IP Guidelines</a>
+            <div>
+                <table class="table table-striped pre-scrollable">
+                    <thead>
+                        <tr><th>Category</th>
+                        <th>Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody><tr><td>url</td>
+                        <td>must equals to regex:<br>
+                        {{ "/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/" }}
+                        <br>
+                        Example: https://www.google.com
+                        </td>
+                        </tr>
+                        <tr><td>ip</td>
+                            <td>must equals to regex:<br>
+                                {{ "/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/" }}
+                            <br>
+                            Example: 192.168.1.1
+                            </td>
+                        </tr>
+                        <tr><td>multiple URLs & IPs</td>
+                            <td>to add more than one URL/IP:
+                                <br>
+                                click on Add, and your URL/IP will be added to the list in the right.
+                                <br>
+                                click on Submit, when you finish! 
+                            </td>
+                        </tr>
+                        <tr><td>delete added URL/IP</td>
+                            <td>when you regret adding URL/IP:
+                                <br>
+                                choose the URL/IP you want to remove from the list in the right.
+                                <br>
+                                click on Remove! 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <form [formGroup]="listForm" (ngSubmit)="formSubmit()">
+                <div class="form-group">
+                    <label for="listInput">Text input:</label>
+                    <input required
+                        id="listInput"
+                        name="textValue"
+                        type="text" 
+                        class="form-control" 
+                        aria-describedby="listInput" 
+                        placeholder="Enter text here"
+                        formControlName="listInput">
+                        <span class="help-block" *ngIf="listForm.get('listInput').errors && (listForm.get('listInput').dirty || listForm.get('listInput').touched)">
+                                <p *ngIf="listForm.get('listInput').errors.required">Required</p>
+                                <p *ngIf="listForm.get('listInput').errors.pattern">Input must match the regex</p>
+                        </span>
+                </div>
+                <button [disabled]="!this.listForm.valid" type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+        <div class="col-sm-3 col-xs-12">
+            <a class="list-group-item list-group-item-action list-group-item-info">Selected URLs & IPs</a>
+            <div>
+                <div id="chosens_list" class="list-group pre-scrollable">
+                    <a class="list-group-item" (click)="onClick(i)" *ngFor="let chosen_elm of chosensList; let i=index;" [class.active]="isSelected(i)">{{ chosen_elm }}</a>
+                </div>
+                <button 
+                    class="btn btn-primary"
+                    (click)="onSubmit()"
+                    [disabled]="chosensList.length === 0 ? true : false">
+                    Submit
+                </button>
+                <button 
+                    class="btn btn-primary" 
+                    (click)="removeChosen()"
+                    [disabled]="selectedIndex === -1 || chosensList.length === 0 ? true : false">
+                    Remove
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="jumbotron">
+                    <div>
+                            <h1>Request Submission Status</h1>      
+                            <p>The status of the request you submitted</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                    <div class="progress" *ngIf="!this.isArrived">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar"
+                        [ngStyle]="{'width.%': this.barPercentage}">
+                            {{ this.barPercentage }}%
+                        </div>
+                    </div>
+                    <div class="alert alert-warning" *ngIf="this.isArrived && this.isCodeError">
+                        <strong>Attention!</strong> Failed to submit request due to server interal error
+                        <p>Please try again later!</p>
+                    </div>
+                    <div class="alert alert-success" *ngIf="this.isArrived && !this.isCodeError">
+                            <strong>Attention!</strong> Request submitted successfully!
+                    <br>
+                    </div>
+                </div>
+        </div>
+    </div>    
