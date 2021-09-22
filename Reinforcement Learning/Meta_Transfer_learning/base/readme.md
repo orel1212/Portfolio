@@ -5,11 +5,11 @@
 
 ## Results
 1. 'CartPole-v1' <br>
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/base/%E2%80%8F%E2%80%8Fcart_pole.PNG)
 2. 'Acrobot-v1' <br>
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/base/%E2%80%8F%E2%80%8Facrobot.PNG)
 3. 'MountainCarContinuous-v0' <br>
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/base/%E2%80%8F%E2%80%8Fmountain_car.PNG)
 
 ## Files
 1. ac_base.py ->  main script <br>
