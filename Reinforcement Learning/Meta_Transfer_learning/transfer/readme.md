@@ -6,8 +6,8 @@
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Meta_Transfer_learning/transfer/%E2%80%8F%E2%80%8Fprogressive_networks.PNG) <br>
 Tp make the convergence work, we built the architecture as a progressive network.   <br>
 First we train the first model, and then use the result as an input to the second model.  <br>We then use both models as an input to the third model layers.   <br>For
-example, {acrobot, mountainCar}->cartpole means, we first train the acrobot model, 
-then use the trained acrobot layers output as an input to train mountainCar,  <br> and then
+example, {acrobot, mountainCar}->cartpole means, we first train the acrobot model,   <br>
+then use the trained acrobot layers output as an input to train mountainCar, and then
 use them both as an input to the cartpole layers.  <br>
 
 ## Results
