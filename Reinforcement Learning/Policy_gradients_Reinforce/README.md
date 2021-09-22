@@ -28,8 +28,10 @@ much more stable compared to REINFORCE with baseline, which had many <br>
 “exploration drops” throughout the way until it finally converged. <br>
 
 # Requirements
-● Python 3.7
-● Tensorflow 1.4
+● Python 3.7 <br>
+● Tensorflow 1.4 <br>
+
+# Written by Orel Lavie and Noam Tzukerman
 
 
 
