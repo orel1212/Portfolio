@@ -1,22 +1,35 @@
-# DDQN algorithm implementation for 'CartPole-v1' gym environment
-## Hyperparameters
-1. learning rate - 0.01 <br>
-2. discount factor - 0.99
-3. epsilon decay rate - 0.99 ( exponential decay)
+# Policy gradients algorithms implementation for 'CartPole-v1' gym environment
+## Reinforce
+### Results (loss in each training step and the total reward of each episode)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+### How To Run
+run ./policy_gradients.py
+## Reinforce with baseline (V func)
+### Results (loss in each training step and the total reward of each episode)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_baseline_results.PNG)
+### How To Run
+run ./policy_gradients_with_baseline.py
+## Actor Critic
+### Results (loss in each training step and the total reward of each episode)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Factor_critic.PNG)
+### How To Run
+run ./actor_critic.py
 
-## Architecture
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/DDQN/%E2%80%8F%E2%80%8Farchitecture.PNG)
+## Comparison
+Conversion to an average reward of at least 475 over 100 consecutive episodes: <br>
+1. Reinforce: 2633 episodes <br>
+2. Reinforce with baseline: 1227 episodes <br>
+3. Actor-critic: 1029 episodes <br>
 
-## Results
-At episode number 291 the agent first obtains an average reward of <br>
-at least 475 over 100 consecutive episodes.
+We can see that REINFORCE is very unstable and it takes much more time to  <br>
+converge than the other algorithms. Both REINFORCE with baseline and actor-critic,  <br>
+converged much faster. However, actor-critic converged slightly faster, while being  <br>
+much more stable compared to REINFORCE with baseline, which had many <br>
+“exploration drops” throughout the way until it finally converged. <br>
 
-## the loss in each training step
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/DDQN/%E2%80%8F%E2%80%8Floss_per_step.PNG)
+# Requirements
+● Python 3.7
+● Tensorflow 1.4
 
-## the total reward of each episode in training
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/DDQN/%E2%80%8F%E2%80%8Frewards_per_episode.PNG)
 
-# How To Run
-run ./ddqn_cart_pole.py
 
