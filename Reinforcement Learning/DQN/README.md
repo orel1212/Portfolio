@@ -1,4 +1,4 @@
-# Q learning algorithm implementation for 'CartPole-v1' gym environment
+# Deep Q learning algorithm implementation for 'CartPole-v1' gym environment
 ## Hyperparameters
 1. learning rate - 0.01 <br>
 2. discount factor - 0.99
