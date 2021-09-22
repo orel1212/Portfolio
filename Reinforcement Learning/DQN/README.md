@@ -1,18 +1,26 @@
-# Q learning algorithm implementation for 'FrozenLake-v0' gym environment
+# Q learning algorithm implementation for 'CartPole-v1' gym environment
 ## Hyperparameters
-1. learning rate - 0.1 <br>
+1. learning rate - 0.01 <br>
 2. discount factor - 0.99
-3. epsilon decay rate - 0.99995 ( exponential decay)
+3. epsilon decay rate - 0.99 ( exponential decay)
 
-## Q_table after 5000 steps
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Q_Learning/%E2%80%8F%E2%80%8Fq_table.PNG)
+## Architecture
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/DQN/%E2%80%8F%E2%80%8Farchitectures.PNG)
 
-## the reward per episode
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Q_Learning/reward_per_episode.PNG)
+## Results
+### 3 Hidden Layers 
+At episode number 224 the agent first obtains an average reward of <br>
+at least 475 over 100 consecutive episodes.
+### 5 Hidden Layers <br>
+At episode number 354 the agent first obtains an average reward of <br>
+at least 475 over 100 consecutive episodes
 
-## average number of steps to the goal over the last 100 episodes
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Q_Learning/%E2%80%8F%E2%80%8Fsteps_to_goal_per_episode.PNG)
+## the loss in each training step
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/DQN/%E2%80%8F%E2%80%8Floss_per_step.PNG)
+
+## the total reward of each episode in training
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/DQN/%E2%80%8F%E2%80%8Frewards_per_episode.PNG)
 
 # How To Run
-run ./q_learning_frozen_lake.py
+run ./deep_q_learning_cart_pole_3_5.py
 
