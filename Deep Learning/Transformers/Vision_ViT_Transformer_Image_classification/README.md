@@ -5,7 +5,7 @@ Cifar10 dataset
 ## Models
 Transformer - Vision Transformer
 <a> https://arxiv.org/abs/2010.11929 </a>
-
+### Pytorch
 ## Files
 ### image_classification_train.ipynb
 running notebook of the code of the train
