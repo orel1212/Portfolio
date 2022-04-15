@@ -1,5 +1,4 @@
-# Question-answering system based on Orignal Transformer with BytePair GPT2 tokenizer
-
+# Image classification based on a VIT - Vision Transformer
 ## Dataset
 Cifar10 dataset
 <a> https://huggingface.co/datasets/cifar10 </a>
