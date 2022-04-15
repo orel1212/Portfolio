@@ -1,7 +1,6 @@
 # Detecting Attacks on Semantic Segmentation Models (SSM) via Object Detection Model (ODM)
-## Attacks
+## Attacks on THE SSM
 ### PGD (projected gradient descent)
-### Gradient Weighted Average ( more powerful than pgd)
 
 ### alpha-> foreground transparency hyperparameter
 
