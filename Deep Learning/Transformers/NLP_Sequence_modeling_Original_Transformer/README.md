@@ -8,6 +8,7 @@ A corpus that contains a large metadata-rich collection of fictional conversatio
 ## Models
 Transformer - original
 <a> https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need </a>
+<br>
 Bytepair GPT2 Tokenizer
 <a> https://huggingface.co/docs/transformers/model_doc/gpt2 </a>
 
