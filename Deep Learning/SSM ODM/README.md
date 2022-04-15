@@ -2,8 +2,6 @@
 ## Attacks on THE SSM
 ### PGD (projected gradient descent)
 
-### alpha-> foreground transparency hyperparameter
-
 ## Dataset
 Cityscapes dataset
 <a> https://www.cityscapes-dataset.com </a>
