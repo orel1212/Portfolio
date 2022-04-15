@@ -1,5 +1,5 @@
 # Detecting Attacks on Semantic Segmentation Models (SSM) via Object Detection Model (ODM)
-## Attacks on THE SSM
+## Attacks on the SSM
 ### PGD (projected gradient descent)
 
 ## Dataset
