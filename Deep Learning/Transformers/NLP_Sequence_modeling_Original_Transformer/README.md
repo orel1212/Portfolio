@@ -1,10 +1,9 @@
 # Question-answering system based on Orignal Transformer with BytePair GPT2 tokenizer
 
 ## Dataset
-Cifar10 dataset
-<a> https://huggingface.co/datasets/cifar10 </a>
+A corpus that contains a large metadata-rich collection of fictional conversations extracted from raw movie scripts <br>
 <a> https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html </a>
-A corpus that contains a large metadata-rich collection of fictional conversations extracted from raw movie scripts
+
 ## Models
 Transformer - original
 <a> https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need </a>
