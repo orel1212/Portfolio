@@ -13,7 +13,7 @@ Yolov5 <a>https://github.com/ultralytics/yolov5</a>
 
 ## Files
 ### attack.ipynb
-running notebook of the code of the attack (pgd/weighted)
+running notebook of the code of the attack (pgd/weighted variant)
 ### defense.ipynb
 running notebook of the code of the defense (odm)
 
