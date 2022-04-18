@@ -6,7 +6,7 @@ Including Deep Learning (e.g., Pytorch, Tensorflow, Keras, Chainer), Reinforceme
 2. Vision image classification based on Vision Transformers (VIT) ( at Deep Learning/Transformers/Vision_ViT_Transformer_Image_classification). <br>
 3. Detecting perturbation attacks on Semantic Segmentation Models (SSM) via Object Detection Model (ODM) ( at Deep Learning/SSM ODM). <br>
 4. Twitter Geo-Sentiment Analysis based on CNN and LSTM (at WEB (+DL)/Deep Learning + Angular + Flask/GeoSentiment Analysis). <br>
-5. DQN, DDQN, Reinforce and Actor-crtitics algorithms for known toy examples (e.g., Cart-Pole, Acrobot, etc) (at Reinforcement Learning).<br>
+5. DQN, DDQN, Reinforce and Actor-crtitics algorithms for known toy example environments (e.g., Cart-Pole, Acrobot, etc) (at Reinforcement Learning).<br>
 <br>
 And many more...
  
