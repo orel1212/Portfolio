@@ -1,4 +1,4 @@
-# Detecting Attacks on Semantic Segmentation Models (SSM) via Object Detection Model (ODM)
+# Detecting perturbation attacks on Semantic Segmentation Models (SSM) via Object Detection Model (ODM)
 ## Attacks on the SSM
 ### PGD (projected gradient descent)
 <a> https://arxiv.org/abs/1706.06083 </a> 
@@ -10,7 +10,7 @@ Cityscapes dataset
 SCNN <a>https://github.com/Tramac/Fast-SCNN-pytorch</a>
 ### ODM
 Yolov5 <a>https://github.com/ultralytics/yolov5</a>
-
+### Pytorch
 ## Files
 ### attack.ipynb
 running notebook of the code of the attack (pgd/weighted variant)

@@ -4,10 +4,10 @@
 2 2 2 4 2 6 4 2 4 4 4 6 6 2 6 4 6 6 1 1 3 5 5 5 5 3 3 3
 ## output ( output.txt )
 R is Reflexsive <br>
-R is not irreflexsive <br>
+R is not Irreflexsive <br>
 R is Symmetric <br>
 R is not AntiSymmetric <br>
-R is not ASymmetric <br>
+R is not Asymmetric <br>
 R is Transitive <br>
 R is Equivalence <br>
 Equivalence classes: <br>
