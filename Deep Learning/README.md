@@ -14,7 +14,7 @@ CNN + LSTM - > CRNN text recognition <br>
 ## Train + Test
 0.8/0.2 split <br>
 
-99.63% Accuracy on 21838 samples (20% test)
+99.33% Accuracy on 21838 samples (20% test)
 
 ## Error predictions samples
 16 samples chosen as an example to show how the model misclassifies <br>
