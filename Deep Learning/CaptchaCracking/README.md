@@ -21,7 +21,7 @@ Based on Resnet34 Torchvision - Transfer Learning <br>
 
 ## Error prediction samples
 16 random samples chosen as an example to show how the model misclassifies <br>
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/captcha_errors.JPG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/CaptchaCracking/captcha_errors.JPG)
 
 ## Dependencies
 Python 3.8
