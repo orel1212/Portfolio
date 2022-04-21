@@ -24,8 +24,8 @@ Based on Resnet34 Torchvision - Transfer Learning <br>
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/CaptchaCracking/captcha_errors.JPG)
 
 ## Dependencies
-Python 3.8
-Pytorch
+Python 3.8 <br>
+Pytorch <br>
 Numpy
 
 ## Made by Orel Lavie and Tamir Gabay
