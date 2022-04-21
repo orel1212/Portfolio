@@ -10,14 +10,17 @@ A Captcha cracking tool based on CNN and LSTM
 ## Model
 CNN + LSTM - > CRNN text recognition <br>
 <a> https://dl.acm.org/doi/abs/10.1145/3297067.3297073 </a>
+<br>
+Based on Resnet34 Torchvision - Transfer Learning <br>
+<a> https://pytorch.org/vision/stable/generated/torchvision.models.resnet34.html </a>
 
 ## Train + Test
 0.8/0.2 split <br>
 
 99.33% Accuracy on 21838 samples (20% test)
 
-## Error predictions samples
-16 samples chosen as an example to show how the model misclassifies <br>
+## Error prediction samples
+16 random samples chosen as an example to show how the model misclassifies <br>
 ![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/captcha_errors.JPG)
 
 ## Dependencies
@@ -26,3 +29,4 @@ Pytorch
 Numpy
 
 ## Made by Orel Lavie and Tamir Gabay
+<a> https://github.com/tamirgabgab </a>
