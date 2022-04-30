@@ -5,7 +5,7 @@
 InvertedPendulum-v2
 ## My implementation
 ### Results (the total reward of each episode)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Soft%20Actor%20Critic/rewards_per_ep_600.png)
 ### How To Run
 run ./main.py
 
