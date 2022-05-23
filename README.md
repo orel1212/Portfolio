@@ -13,6 +13,10 @@ Including Deep Learning (e.g., Pytorch, Tensorflow, Keras, Chainer), Reinforceme
 <a>https://github.com/orel1212/MyWorks/tree/main/Deep%20Learning/CaptchaCracking</a> <br>
 6. DQN, DDQN, Reinforce and Actor-crtitics algorithms for known toy example environments (e.g., Cart-Pole, Acrobot, etc)<br>
 <a>https://github.com/orel1212/MyWorks/tree/main/Reinforcement%20Learning</a> <br>
+7. User Level Rootkit - WIN API <br>
+<a>https://github.com/orel1212/MyWorks/tree/main/CPP/UserlevelRootKit</a> <br>
+8. DNS Resolver Producer-Consumer <br>
+<a>https://github.com/orel1212/MyWorks/tree/main/CPP/DNSProducerConsumer</a> <br>
 <br>
 And many more...
  
