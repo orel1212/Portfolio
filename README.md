@@ -2,7 +2,8 @@
 ## Many project and mini-projects based on multipile languages and technologies
 Including Deep Learning (e.g., Pytorch, Tensorflow, Keras, Chainer), Reinforcement Learning, Python, C, C++,.NET(C#), Java, Javascript and Angular.
 ### Examples
-1. NLP question answering (sequence modeling) based on Transformers  <br><a>https://github.com/orel1212/MyWorks/tree/main/Deep%20Learning/Transformers/NLP_Sequence_modeling_Original_Transformer</a> <br>
+1. NLP question answering (sequence modeling) based on Transformers  <br>
+[I'm an inline-style link](https://www.google.com)<a>https://github.com/orel1212/MyWorks/tree/main/Deep%20Learning/Transformers/NLP_Sequence_modeling_Original_Transformer</a> <br>
 2. Vision image classification based on Vision Transformers (VIT) <br>
 <a>https://github.com/orel1212/MyWorks/tree/main/Deep%20Learning/Transformers/Vision_ViT_Transformer_Image_classification</a> <br>
 3. Detecting perturbation attacks on Semantic Segmentation Models (SSM) via Object Detection Model (ODM) <br>
