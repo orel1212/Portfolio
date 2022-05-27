@@ -1,6 +1,6 @@
 # std :: Vector custom implementation based on CPP
 
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/CPP/CustomerWaiterTA/%E2%80%8F%E2%80%8Fs1.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/CPP/VectorImplementation/running_example.png)
 ## Features
 1. Dynamic capacity <br>
 2. Iterator DP
