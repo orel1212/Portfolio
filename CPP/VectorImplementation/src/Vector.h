@@ -3,9 +3,71 @@
 #include <iostream>
 #include <algorithm>
 
+template <typename Vector>
+class VectorIterator
+{
+public:
+	using ValueType = typename Vector::value_type;
+	using PtrType = ValueType*;
+	using RefType = ValueType&;
+private:
+	PtrType m_vptr;
+	size_t m_size;
+public:
+	VectorIterator(PtrType v_ptr,size_t size): m_vptr(v_ptr), m_size(size)
+	{}
+	VectorIterator& operator++()
+	{
+		m_vptr++;
+		return *this;
+	}
+	VectorIterator operator++(int)
+	{
+		VectorIterator vi = *this;
+		++(*this);
+		return vi;
+	}
+	VectorIterator& operator--()
+	{
+		m_vptr--;
+		return *this;
+	}
+	VectorIterator operator--(int)
+	{
+		VectorIterator vi = *this;
+		--(*this);
+		return vi;
+	}
+	RefType operator[](size_t idx)
+	{
+		if (m_size >0) //avoid crashing the program when using iterator end
+			assert(idx < m_size);
+		return *(m_vptr + idx);
+	}
+	RefType operator*()
+	{
+		return *m_vptr;
+	}
+	PtrType operator->()
+	{
+		return m_vptr;
+	}
+	bool operator==(const VectorIterator& other) const
+	{
+		return m_vptr == other.m_vptr;
+	}
+	bool operator!=(const VectorIterator& other) const
+	{
+		return m_vptr != other.m_vptr;
+	}
+};
+
 template <typename T>
 class Vector
 {
+public:
+	using value_type = T;
+	using Iterator = VectorIterator<Vector<T>>;
 private:
 	T* m_data = nullptr;
 	const size_t m_new_size_mult = 2;
@@ -104,5 +166,14 @@ public:
 		}
 		new(&m_data[m_size]) T(std::forward<Arguments>(args)...); // call c'tor direct over heap, inplace
 		return m_data[m_size++];
+	}
+	
+	Iterator begin()
+	{
+		return Iterator(m_data,m_size);
+	}
+	Iterator end()
+	{
+		return Iterator(m_data+m_size,0);
 	}
 };
