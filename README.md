@@ -12,7 +12,7 @@ Including Deep Learning (e.g., Pytorch, Tensorflow, Keras, Chainer), Reinforceme
 [Click Here](https://github.com/orel1212/MyWorks/tree/main/WEB%20(%2BDL)/Deep%20Learning%20%2B%20Angular%20%2B%20Flask/GeoSentiment%20Analysis) <br>
 5. Captcha Cracking based on CRNN <br>
 [Click Here](https://github.com/orel1212/MyWorks/tree/main/Deep%20Learning/CaptchaCracking) <br>
-6. DQN, DDQN, Reinforce and Actor-crtitics algorithms for known toy example environments (e.g., Cart-Pole, Acrobot, etc)<br>
+6. DQN, DDQN and Actor-crtitics algos (A3C,Soft AC, etc) for known toy example environments (e.g., Cart-Pole, Acrobot, etc)<br>
 [Click Here](https://github.com/orel1212/MyWorks/tree/main/Reinforcement%20Learning) <br>
 7. User Level Rootkit - WIN API C++<br>
 [Click Here](https://github.com/orel1212/MyWorks/tree/main/CPP/UserlevelRootKit) <br>
