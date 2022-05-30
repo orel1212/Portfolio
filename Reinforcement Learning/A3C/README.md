@@ -1,4 +1,4 @@
-# A3C implementation for 'PongNoFrameskip-v4' (without Frame skip) environment
+# A3C implementation for 'PongNoFrameskip-v4' environment
 ## Paper
 <a> https://arxiv.org/pdf/1602.01783.pdf </a>
 ## Environment
