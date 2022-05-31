@@ -62,7 +62,7 @@ class Agent(nn.Module):
             R = reward + self.gamma * R
             R_returns.append(R)
         R_returns.reverse()
-        R_returns = torch.tensor(R_returns,dtype=torch.float32).reshape(concat_v_data.size())
+        R_returns = torch.tensor(R_returns,dtype=torch.float).reshape(concat_v_data.size())
         return R_returns
 
     def loss_calc(self, new_state, hx, done,
@@ -73,7 +73,7 @@ class Agent(nn.Module):
 
         returns = self._R_eval(rewards, done, v_data)
 
-        new_v = self.forward(torch.tensor([new_state], dtype=torch.float32), hx)[1] if not done\
+        new_v = self.forward(torch.tensor(np.array([new_state]), dtype=torch.float), hx)[1] if not done\
                                                                                 else torch.zeros(1, 1)
         v_data.append(new_v.detach())
         values = torch.cat(v_data).squeeze()
@@ -87,7 +87,7 @@ class Agent(nn.Module):
             for k in range(0, n_steps-t):
                 curr_gae_val = (self.gamma*self.tau)**k * deltas[t+k]
                 gae[t] += curr_gae_val
-        gae = torch.tensor(gae, dtype=torch.float32)
+        gae = torch.tensor(gae, dtype=torch.float)
 
         actor_loss = -(concat_log_probs * gae).sum()
         critic_loss = F.mse_loss(values[:-1].squeeze(), returns)

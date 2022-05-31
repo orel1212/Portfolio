@@ -74,7 +74,9 @@ class FrameStacking(gym.ObservationWrapper):
 
 
 def make_env(env_name, shape=IMAGE_SHAPE, repeat=REPEAT_TIMES):
-    env = ActionRepeat(gym.make(env_name), repeat)
+    gym_env = gym.make(env_name)
+    #print(gym_env.unwrapped.get_action_meanings())
+    env = ActionRepeat(gym_env, repeat)
     env = FramePreprocessing(shape, env)
     env = FrameStacking(env, repeat)
     return env
