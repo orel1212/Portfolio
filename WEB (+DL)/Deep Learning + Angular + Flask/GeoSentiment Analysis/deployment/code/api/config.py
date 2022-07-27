@@ -1,5 +1,5 @@
 class Config:
-    def __init__(self, host = "localhost", port = "9000"):
+    def __init__(self, host="localhost", port="9000"):
         self.host = host
         self.port = port
         self.timesteps = 30
@@ -18,6 +18,3 @@ class Config:
         self.time_zone_list_path = "../metadata/time_zone_list"
         self.tweet_lang_list_path = "../metadata/tweet_lang_list"
         self.user_lang_list_path = "../metadata/user_lang_list"
-
-
-

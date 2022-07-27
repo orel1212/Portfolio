@@ -4,6 +4,8 @@ from os import listdir
 from os.path import splitext
 from api.exceptions import ForbiddenInput
 import re
+
+
 class DemoHandler():
     def __init__(self, path):
         print("DemoHandler init")
@@ -24,7 +26,7 @@ class DemoHandler():
         for hashtag_filename in self.hashtag_filenames:
             with open(self.path + '/' + hashtag_filename) as f:
                 for line in f:
-                    self.tweets.append(Tweet(json.loads(line), is_demo = True))
+                    self.tweets.append(Tweet(json.loads(line), is_demo=True))
 
     def preprocess_search_input(self, search_input):
         hashtags_OR = []

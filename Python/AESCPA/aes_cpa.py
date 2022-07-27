@@ -14,7 +14,7 @@ import requests
 import ex02_M1
 import utils
 
-USER = '309056661'
+USER = '207632118'
 DIFFICULTY = '1000000000000000000000000000000000'
 NUM_TRACES = 4000
 KEY_LENGTH = 16
@@ -40,19 +40,19 @@ SBOX = numpy.array([
     0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16
 ])
 
-HW_BOX = numpy.array([bin(x).count("1") for x in range(256)]) #HW in-advance index computation for 256 byte values
+HW_BOX = numpy.array([bin(x).count("1") for x in range(256)])  # HW in-advance index computation for 256 byte values
 
 
-def _load_traces(file_name): #loading the traces from file
+def _load_traces(file_name):  # loading the traces from file
     with open(file_name, 'r') as f:
-        for line in f: 
+        for line in f:
             t = json.loads(line)
             plaintext = codecs.decode(t['plaintext'], 'hex')
             trace = t['leaks']
             yield plaintext, trace
 
 
-def check_key(key, user, difficulty): #check if the key that we found is the right one
+def check_key(key, user, difficulty):  # check if the key that we found is the right one
     hex_key = codecs.encode(key, 'hex').decode('ascii')
     url = f'http://aoi.ise.bgu.ac.il/verify?user={user}&difficulty={difficulty}&key={hex_key}'
     r = requests.get(url)
@@ -77,7 +77,7 @@ def recover_key(traces_file_name, trace_count=None, show_plots=False):
     if trace_count:
         plaintexts_and_traces = plaintexts_and_traces[:trace_count]
 
-    plaintexts = [x[0] for x in plaintexts_and_traces] 
+    plaintexts = [x[0] for x in plaintexts_and_traces]
     traces = [x[1] for x in plaintexts_and_traces]
 
     plaintexts = numpy.array([list(x) for x in plaintexts], numpy.byte)
@@ -85,15 +85,15 @@ def recover_key(traces_file_name, trace_count=None, show_plots=False):
 
     LOG.info(f'STARTED key recovery')
 
-    if show_plots: # if we want to get plots of Pearson's correlation on our data
+    if show_plots:  # if we want to get plots of Pearson's correlation on our data
         key_guess = [
             guess_single_key_byte(traces, plaintexts, key_idx, show_plots) for key_idx in range(KEY_LENGTH)
         ]
-    else: #if we won't use any plots, we will use thread pool design pattern to make the computation of the key bytes faster
+    else:  # if we won't use any plots, we will use thread pool design pattern to make the computation of the key bytes faster
         executor = concurrent.futures.ThreadPoolExecutor(multiprocessing.cpu_count())
         promises = []
-        for key_idx in range(KEY_LENGTH): # each one of the 16 bytes
-            promises.append(executor.submit(guess_single_key_byte,traces, plaintexts, key_idx))
+        for key_idx in range(KEY_LENGTH):  # each one of the 16 bytes
+            promises.append(executor.submit(guess_single_key_byte, traces, plaintexts, key_idx))
 
         key_guess = [p.result() for p in promises]
 
@@ -106,25 +106,27 @@ def recover_key(traces_file_name, trace_count=None, show_plots=False):
     return hex_key
 
 
-def guess_single_key_byte(traces, plaintexts, key_idx, show_plots = False): # finds the right key byte
+def guess_single_key_byte(traces, plaintexts, key_idx, show_plots=False):  # finds the right key byte
     LOG.debug(f'STARTED recovering key[{key_idx}]')
     correlations = []
-    for kbg in range(256): #for each byte in the key there are 256 options
-        p_xor_k = plaintexts[:, key_idx] ^ kbg #plaintext_byte xor key_byte
-        sbox_p_xor_k = SBOX[p_xor_k] #sbox to substitute the byte
+    for kbg in range(256):  # for each byte in the key there are 256 options
+        p_xor_k = plaintexts[:, key_idx] ^ kbg  # plaintext_byte xor key_byte
+        sbox_p_xor_k = SBOX[p_xor_k]  # sbox to substitute the byte
 
         HW_p_xor_k = HW_BOX[p_xor_k]
-        HW_sbox = HW_BOX[sbox_p_xor_k]#HW on the sbox byte
+        HW_sbox = HW_BOX[sbox_p_xor_k]  # HW on the sbox byte
 
         kbg_correlations = []
         for i in range(traces.shape[1]):
-            kbg_correlations.append(scipy.stats.pearsonr(HW_sbox, traces[:, i])[0]) #Pearson's correlation coefficient computation over each time
+            kbg_correlations.append(scipy.stats.pearsonr(HW_sbox, traces[:, i])[
+                                        0])  # Pearson's correlation coefficient computation over each time
             # kbg_correlations.append(scipy.stats.pearsonr(HW_p_xor_k, traces[:,i])[0])
 
         correlations.append(kbg_correlations)
     correlations = numpy.array(correlations)
-    max_correlations = numpy.abs(correlations).max(axis=1) # get the max correlation for each optional byte(axis 1 style)
-    max_kbg = int(max_correlations.argmax()) #get the index of the right byte - max value in the matrix 256xT
+    max_correlations = numpy.abs(correlations).max(
+        axis=1)  # get the max correlation for each optional byte(axis 1 style)
+    max_kbg = int(max_correlations.argmax())  # get the index of the right byte - max value in the matrix 256xT
     # from IPython import embed; embed()
     if show_plots:
         plt.title(f'Idx = {key_idx}, KBG=0x{max_kbg:X}')
@@ -133,6 +135,7 @@ def guess_single_key_byte(traces, plaintexts, key_idx, show_plots = False): # fi
 
     LOG.debug(f'FINISHED recovering key[{key_idx}] -> 0x{max_kbg:x}')
     return max_kbg
+
 
 def main():
     global DIFFICULTY, NUM_TRACES, USER

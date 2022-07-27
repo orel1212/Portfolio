@@ -36,13 +36,12 @@ class Model():
         model = Sequential()
         model.add(Dense(self.hidden_size, activation='relu', input_dim=self.input_space))
         for i in range(1, self.n_hidden):
-          model.add(Dense(self.hidden_size, activation="relu"))
+            model.add(Dense(self.hidden_size, activation="relu"))
         model.add(Dense(self.output_space, activation='linear'))
         model.compile(optimizer=Adam(lr=self.lr), loss='mse', metrics=['accuracy'])
         plot_model(model, to_file=f'layers_model.png', show_shapes=True, show_layer_names=True)
         model.summary()
         return model
-
 
 
 class DDQN_Agent():
@@ -61,8 +60,8 @@ class DDQN_Agent():
         self.env = env
         self.state_space = env.observation_space.shape[0]
         self.action_space = env.action_space.n
-        self.first_model = Model(self.state_space, self.action_space,learning_rate,n_hidden,hidden_size)
-        self.second_model = Model(self.state_space, self.action_space,learning_rate,n_hidden,hidden_size)
+        self.first_model = Model(self.state_space, self.action_space, learning_rate, n_hidden, hidden_size)
+        self.second_model = Model(self.state_space, self.action_space, learning_rate, n_hidden, hidden_size)
         self.experience_replay_buffer = deque(maxlen=experience_replay_size)
         self.episodes = episodes
         self.discount_factor = discount_factor
@@ -141,7 +140,8 @@ class DDQN_Agent():
             if len(self.rewards_list) >= 100:
                 episods_mean = np.mean(self.rewards_list[-100:])
                 if episods_mean >= 475:
-                    print(f"At episode number :{episode} the agent first obtains an average reward of at least 475 over 100 consecutive episodes")
+                    print(
+                        f"At episode number :{episode} the agent first obtains an average reward of at least 475 over 100 consecutive episodes")
             print(f"Episode:{episode}, time: {end_episode_time - start_episode_time}, reward: {episode_reward}")
         print("total reward after training:")
         print(sum(self.rewards_list))

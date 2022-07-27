@@ -1,12 +1,12 @@
 from api import db
 
+
 class UserModel(db.Model):
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer, primary_key = True)
-    access_token = db.Column(db.String(120), nullable = False)
-    access_secret = db.Column(db.String(120), nullable = False)
-
+    id = db.Column(db.Integer, primary_key=True)
+    access_token = db.Column(db.String(120), nullable=False)
+    access_secret = db.Column(db.String(120), nullable=False)
 
     def save_to_db(self):
         db.session.add(self)
@@ -27,7 +27,7 @@ class UserModel(db.Model):
         user = cls.query.get(id)
         access_token = user.access_token
         access_secret = user.access_secret
-        return (access_token,access_secret)
+        return (access_token, access_secret)
 
     @classmethod
     def return_all(cls):
@@ -37,4 +37,5 @@ class UserModel(db.Model):
                 'access_token': x.access_token,
                 'access_secret': x.access_secret
             }
+
         return {'users': list(map(lambda x: to_json(x), UserModel.query.all()))}

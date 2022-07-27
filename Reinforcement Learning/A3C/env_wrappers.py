@@ -4,9 +4,9 @@ from torchvision.transforms import Resize, ToTensor, Grayscale
 import numpy as np
 import gym
 
-
 IMAGE_SHAPE = (84, 84, 1)
 REPEAT_TIMES = 4
+
 
 class ActionRepeat(gym.Wrapper):
     def __init__(self, env=None, repeat=4, fire_first=False):
@@ -42,7 +42,7 @@ class FramePreprocessing(gym.ObservationWrapper):
                                                 dtype=np.float32)
 
     def observation(self, obs):
-        composed = transforms.Compose([ToTensor(),Grayscale(),Resize(size=self.shape[1:])])
+        composed = transforms.Compose([ToTensor(), Grayscale(), Resize(size=self.shape[1:])])
         resized_screen = composed(obs)
         new_obs = np.array(resized_screen, dtype=np.uint8).reshape(self.shape)
         new_obs = new_obs / 255.0
@@ -54,9 +54,9 @@ class FrameStacking(gym.ObservationWrapper):
     def __init__(self, env, repeat):
         super(FrameStacking, self).__init__(env)
         self.observation_space = gym.spaces.Box(
-                env.observation_space.low.repeat(repeat, axis=0),
-                env.observation_space.high.repeat(repeat, axis=0),
-                dtype=np.float32)
+            env.observation_space.low.repeat(repeat, axis=0),
+            env.observation_space.high.repeat(repeat, axis=0),
+            dtype=np.float32)
         self.stack = collections.deque(maxlen=repeat)
 
     def reset(self):
@@ -75,7 +75,7 @@ class FrameStacking(gym.ObservationWrapper):
 
 def make_env(env_name, shape=IMAGE_SHAPE, repeat=REPEAT_TIMES):
     gym_env = gym.make(env_name)
-    #print(gym_env.unwrapped.get_action_meanings())
+    # print(gym_env.unwrapped.get_action_meanings())
     env = ActionRepeat(gym_env, repeat)
     env = FramePreprocessing(shape, env)
     env = FrameStacking(env, repeat)

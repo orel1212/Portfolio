@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
-app = Flask(__name__)
-#app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+app = Flask(__name__)
+# app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -11,6 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'some-secret-string'
 
 db = SQLAlchemy(app)
+
 
 @app.before_first_request
 def create_tables():
@@ -30,5 +31,5 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Headers', 'Authorization')
     return response
 
-    
+
 import api.views, api.models

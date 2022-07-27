@@ -2,6 +2,7 @@ from api.config import Config
 from api.sentiment_analysis import SentimentAnalysis
 from api.geolocation_prediction import GeolocationPrediction
 
+
 class GeoSentimentHandler:
     def __init__(self):
         print("geosentiment handler init")
@@ -12,4 +13,3 @@ class GeoSentimentHandler:
     def compute_predictions(self, tweets):
         self.sentiment_analysis.predict_tweets_sentiment(tweets, self.config.host, self.config.port)
         self.geolocation_prediction.predict_tweets_geolocation(tweets, self.config.host, self.config.port)
-

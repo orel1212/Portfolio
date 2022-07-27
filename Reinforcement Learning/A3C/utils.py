@@ -26,18 +26,19 @@ class SharedAdam(torch.optim.Adam):
                 state['exp_avg'].share_memory_()
                 state['exp_avg_sq'].share_memory_()
 
+
 class ParallelEnvironment:
     def __init__(self, env_id, input_shape, n_actions):
-
         names = [str(i) for i in range(NUM_THREADS)]
-        global_actor_critic = Agent(input_shape, n_actions,n_hidden)
+        global_actor_critic = Agent(input_shape, n_actions, n_hidden)
         global_actor_critic.share_memory()
         global_optim = SharedAdam(global_actor_critic.parameters(), lr=LEARNING_RATE)
 
         print(f'Num_threads: {NUM_THREADS}')
         self.ps = [mp.Process(target=create_worker,
                               args=(name, n_hidden, input_shape, n_actions,
-                                    global_actor_critic, global_optim, env_id, MAX_EPOCHS_NUM, MAX_TIMESTEPS)) for name in names]
+                                    global_actor_critic, global_optim, env_id, MAX_EPOCHS_NUM, MAX_TIMESTEPS)) for name
+                   in names]
 
         [p.start() for p in self.ps]
         [p.join() for p in self.ps]

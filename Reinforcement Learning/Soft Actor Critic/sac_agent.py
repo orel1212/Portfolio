@@ -1,4 +1,3 @@
-
 import torch
 import torch.nn.functional as F
 
@@ -7,8 +6,8 @@ from sac_networks import Actor, Critic, Value
 
 
 class SACAgent:
-    def __init__(self, device,alpha_actor, alpha_others, input_dims,num_actions, action_tanh_mult, tau= 0.005,
-                  gamma=0.99, num_hidden_layers=1, hidden_size=256, buffer_sample_size=256, scaling=2, num_critics = 2):
+    def __init__(self, device, alpha_actor, alpha_others, input_dims, num_actions, action_tanh_mult, tau=0.005,
+                 gamma=0.99, num_hidden_layers=1, hidden_size=256, buffer_sample_size=256, scaling=2, num_critics=2):
 
         self.device = device
         self.input_dims = input_dims
@@ -22,16 +21,19 @@ class SACAgent:
         self.num_critics = num_critics
         self.scaling = scaling
 
-
         self.buffer = ReplayBuffer(self.input_dims, self.num_actions)
-        self.actor = Actor(self.device, alpha_actor, self.input_dims, self.num_actions, self.num_hidden_layers, self.hidden_size, self.action_tanh_mult)
+        self.actor = Actor(self.device, alpha_actor, self.input_dims, self.num_actions, self.num_hidden_layers,
+                           self.hidden_size, self.action_tanh_mult)
         self.critics = []
         for i in range(self.num_critics):
-            critic_ = Critic(self.device, alpha_others, self.input_dims, self.num_actions, self.num_hidden_layers, self.hidden_size, i+1)
+            critic_ = Critic(self.device, alpha_others, self.input_dims, self.num_actions, self.num_hidden_layers,
+                             self.hidden_size, i + 1)
             self.critics.append(critic_)
 
-        self.value = Value(self.device, alpha_others, self.input_dims, self.num_hidden_layers, self.hidden_size,'value')
-        self.target_value = Value(self.device, alpha_others, self.input_dims, self.num_hidden_layers, self.hidden_size,'target')
+        self.value = Value(self.device, alpha_others, self.input_dims, self.num_hidden_layers, self.hidden_size,
+                           'value')
+        self.target_value = Value(self.device, alpha_others, self.input_dims, self.num_hidden_layers, self.hidden_size,
+                                  'target')
 
         self.detune_update_value_network_parameters(tau=1)
 
@@ -46,7 +48,7 @@ class SACAgent:
 
     def train(self):
 
-        def get_critic_output(actor,critics,num_critics,state,reparameterize=False):
+        def get_critic_output(actor, critics, num_critics, state, reparameterize=False):
             actions, log_probs = actor.normal_sampling(state, reparameterize)
             log_probs = log_probs.view(-1)
             critic_output = critics[0].forward(state, actions)
@@ -55,7 +57,6 @@ class SACAgent:
                 critic_output = torch.min(critic_output.clone(), critic_output_)
             critic_output = critic_output.view(-1)
             return critic_output, log_probs
-
 
         if not self.buffer.validate_min_buffer_size(self.buffer_sample_size):
             return
@@ -67,30 +68,33 @@ class SACAgent:
         state_ = torch.tensor(new_state, dtype=torch.float32).to(self.device)
         done = torch.tensor(done).to(self.device)
 
-        #updating the value networks, need without reparameterized
-        critic_output, log_probs = get_critic_output(self.actor, self.critics, self.num_critics, state, reparameterize=False)
+        # updating the value networks, need without reparameterized
+        critic_output, log_probs = get_critic_output(self.actor, self.critics, self.num_critics, state,
+                                                     reparameterize=False)
 
         target_value_pred = self.target_value(state_).view(-1)
-        target_value_pred[done] = 0.0 # updated terminal states
+        target_value_pred[done] = 0.0  # updated terminal states
 
         value_pred = self.value(state).view(-1)
         self.value.optimizer.zero_grad()
         value_target = critic_output - log_probs
         value_loss = 0.5 * (F.mse_loss(value_pred, value_target))
-        value_loss.backward(retain_graph=True) #should retrain_Graph to not lose the coupling between losses of actor and value functions
+        value_loss.backward(
+            retain_graph=True)  # should retrain_Graph to not lose the coupling between losses of actor and value functions
         self.value.optimizer.step()
 
-        #updating the actor network, need with reparameterized to add exploration.
+        # updating the actor network, need with reparameterized to add exploration.
         critic_output, log_probs = get_critic_output(self.actor, self.critics, self.num_critics, state,
                                                      reparameterize=True)
 
         self.actor.optimizer.zero_grad()
         actor_loss = log_probs - critic_output
         actor_loss = torch.mean(actor_loss)
-        actor_loss.backward(retain_graph=True) #should retrain_Graph to not lose the coupling between losses of actor and value functions
+        actor_loss.backward(
+            retain_graph=True)  # should retrain_Graph to not lose the coupling between losses of actor and value functions
         self.actor.optimizer.step()
 
-        #update critics, by using the buffered actions!
+        # update critics, by using the buffered actions!
         q_val_hat = self.gamma * target_value_pred + self.scaling * reward
 
         critic_total_loss = 0

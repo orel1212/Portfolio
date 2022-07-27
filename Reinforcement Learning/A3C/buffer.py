@@ -19,4 +19,4 @@ class Buffer:
         self.log_probs = []
 
     def get_buffer(self):
-        return self.states, self.actions, self.rewards, self.new_states,self.v_data, self.log_probs
+        return self.states, self.actions, self.rewards, self.new_states, self.v_data, self.log_probs

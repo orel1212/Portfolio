@@ -1,9 +1,9 @@
-
 import torch
 import torch.nn as nn
 import torch.utils.data
 import math
 import torch.nn.functional as F
+
 
 class TransformerEmbeddings(nn.Module):
 
@@ -40,7 +40,7 @@ class TransformerEmbeddings(nn.Module):
         assert curr_seq_size <= 2 * self.seq_len, "Trained sequence length for Positional Encoding is below current required sequence length. Exiting!"
         embedds = self.embed(input_seq) * math.sqrt(self.embed_dim)
         curr_device = embedds.get_device()
-        embedds+= self.p_e[:, :curr_seq_size].to(curr_device)
+        embedds += self.p_e[:, :curr_seq_size].to(curr_device)
         embedds = self.dropout(embedds)
         return embedds
 
@@ -56,9 +56,9 @@ class MultiHeadAttentionPart(nn.Module):
 
         self.d_head = self.embed_dim // self.num_heads
 
-        self.query_linear = nn.Linear(self.embed_dim, self.embed_dim, bias = False)
-        self.key_linear = nn.Linear(self.embed_dim, self.embed_dim, bias = False)
-        self.value_linear = nn.Linear(self.embed_dim, self.embed_dim, bias = False)
+        self.query_linear = nn.Linear(self.embed_dim, self.embed_dim, bias=False)
+        self.key_linear = nn.Linear(self.embed_dim, self.embed_dim, bias=False)
+        self.value_linear = nn.Linear(self.embed_dim, self.embed_dim, bias=False)
 
         self.concat_linear = nn.Linear(self.embed_dim, self.embed_dim)
         self.dropout = nn.Dropout(self.dropout_rate)
@@ -86,6 +86,7 @@ class MultiHeadAttentionPart(nn.Module):
         concat_ouput = self.concat_linear(qkv)  # output dim [batch_size, seq_len, embed_dim]
         return concat_ouput
 
+
 class FeedForwardPart(nn.Module):
 
     def __init__(self, embed_dim, dropout_rate=0.1, expansion_dim=1024):
@@ -102,12 +103,12 @@ class FeedForwardPart(nn.Module):
             nn.Linear(self.expansion_dim, self.embed_dim),
             nn.Dropout(self.dropout_rate)
         )
-        #self.exp = nn.Linear(self.embed_dim, self.expansion_dim)
-        #self.de_exp = nn.Linear(self.expansion_dim, self.embed_dim)
-        #self.dropout = nn.Dropout(self.dropout_rate)
+        # self.exp = nn.Linear(self.embed_dim, self.expansion_dim)
+        # self.de_exp = nn.Linear(self.expansion_dim, self.embed_dim)
+        # self.dropout = nn.Dropout(self.dropout_rate)
 
     def forward(self, input_seq):
-        #out = self.de_exp(self.dropout(F.relu(self.exp(input_seq))))
+        # out = self.de_exp(self.dropout(F.relu(self.exp(input_seq))))
         out = self.exp(input_seq)
         return out
 
@@ -132,6 +133,7 @@ class TransformerEncoder(nn.Module):
         ff_dropout_embedds = self.dropout(self.ff_layer(norm_embedds))
         encoded_embedds = self.layernorm(ff_dropout_embedds + norm_embedds)
         return encoded_embedds
+
 
 class TransformerDecoder(nn.Module):
 

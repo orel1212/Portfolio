@@ -1,8 +1,8 @@
-
 import numpy as np
 
+
 class ReplayBuffer:
-    def __init__(self,  input_shape, num_actions, max_size = 1000000):
+    def __init__(self, input_shape, num_actions, max_size=1000000):
         self.buffer_state_shape = input_shape
         self.buffer_action_shape = num_actions
         self.buffer_size = max_size
@@ -39,4 +39,3 @@ class ReplayBuffer:
         dones = self.done_buffer[batch]
 
         return states, actions, rewards, new_states, dones
-

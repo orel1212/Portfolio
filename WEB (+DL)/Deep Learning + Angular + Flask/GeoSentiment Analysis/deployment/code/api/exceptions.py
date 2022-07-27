@@ -1,10 +1,10 @@
 class ForbiddenInput(Exception):
-    def __init__(self, code = 2, message = "Forbidden Input"):
+    def __init__(self, code=2, message="Forbidden Input"):
         self.code = code
         self.message = message
 
-class TweepyException(Exception):
 
+class TweepyException(Exception):
     """Exception raised for errors in Tweepy module.
 
     Attributes:

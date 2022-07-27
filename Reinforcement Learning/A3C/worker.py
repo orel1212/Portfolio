@@ -6,19 +6,21 @@ from buffer import Buffer
 from env_wrappers import make_env
 import matplotlib.pyplot as plt
 
-output_file_path =  './learning_graph.png'
+output_file_path = './learning_graph.png'
 
-def create_worker(name, n_hidden, input_shape, n_actions, global_agent,optimizer, env_id, num_episodes ,max_timesteps):
+
+def create_worker(name, n_hidden, input_shape, n_actions, global_agent, optimizer, env_id, num_episodes, max_timesteps):
     worker = Worker(name, n_hidden)
-    worker.run(input_shape, n_actions, global_agent,optimizer, env_id, num_episodes ,max_timesteps)
+    worker.run(input_shape, n_actions, global_agent, optimizer, env_id, num_episodes, max_timesteps)
+
 
 class Worker:
-    def __init__(self, name = '1', n_hidden = 256, clipping_rate = 40):
+    def __init__(self, name='1', n_hidden=256, clipping_rate=40):
         self.name = name
         self.clipping_rate = clipping_rate
         self.n_hidden = n_hidden
 
-    def plot_curve(self,episodes, total_rewards):
+    def plot_curve(self, episodes, total_rewards):
         running_avg = np.zeros(len(total_rewards))
         for i in range(len(running_avg)):
             running_avg[i] = np.mean(total_rewards[max(0, i - 100):(i + 1)])
@@ -26,8 +28,8 @@ class Worker:
         plt.title('Average rewards (100 episodes average)')
         plt.savefig(output_file_path)
 
-    def run(self,input_shape, n_actions, global_agent,
-               optimizer, env_id, num_episodes ,max_timesteps):
+    def run(self, input_shape, n_actions, global_agent,
+            optimizer, env_id, num_episodes, max_timesteps):
 
         local_agent = Agent(input_shape, n_actions, self.n_hidden)
 
@@ -53,18 +55,18 @@ class Worker:
                 t_steps += 1
                 if done or ep_steps % max_timesteps == 0:
                     states, actions, rewards, new_states, v_data, log_probs = \
-                            buffer.get_buffer()
+                        buffer.get_buffer()
 
                     loss = local_agent.loss_calc(obs, hx, done, rewards,
                                                  v_data, log_probs)
                     optimizer.zero_grad()
                     hx = hx.detach_()
-                    #print(loss)
+                    # print(loss)
                     loss.backward()
                     nn.utils.clip_grad_norm_(local_agent.parameters(), self.clipping_rate)
                     for local_param, global_param in zip(
-                                            local_agent.parameters(),
-                                            global_agent.parameters()):
+                            local_agent.parameters(),
+                            global_agent.parameters()):
                         global_param._grad = local_param.grad
                     optimizer.step()
                     local_agent.load_state_dict(global_agent.state_dict())

@@ -1,11 +1,9 @@
-
 import pybullet_envs
 import gym
 import numpy as np
 import torch
 from sac_agent import SACAgent as Agent
 import matplotlib.pyplot as plt
-
 
 load_agent_flag = False
 save_agent_flag = True
@@ -29,10 +27,9 @@ if __name__ == '__main__':
 
     env_id = 'InvertedPendulum-v2'
     env = gym.make(env_id)
-    state_shape = env.observation_space.shape[0] #assume 1D input Env
+    state_shape = env.observation_space.shape[0]  # assume 1D input Env
     num_actions = env.action_space.shape[0]
     action_tanh_mult = env.action_space.high
-
 
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
@@ -40,9 +37,10 @@ if __name__ == '__main__':
     else:
         device = torch.device('cpu')
 
-
-    agent = Agent(device, alpha_actor = alpha_actor, alpha_others = alpha_others, input_dims = state_shape, num_actions = num_actions,action_tanh_mult = action_tanh_mult,
-    tau = tau, gamma=gamma, num_hidden_layers = num_hidden_layers, hidden_size = hidden_size, buffer_sample_size = buffer_sample_size, scaling = reward_scaling)
+    agent = Agent(device, alpha_actor=alpha_actor, alpha_others=alpha_others, input_dims=state_shape,
+                  num_actions=num_actions, action_tanh_mult=action_tanh_mult,
+                  tau=tau, gamma=gamma, num_hidden_layers=num_hidden_layers, hidden_size=hidden_size,
+                  buffer_sample_size=buffer_sample_size, scaling=reward_scaling)
 
     if load_agent_flag:
         agent.load()
@@ -51,12 +49,12 @@ if __name__ == '__main__':
         env.reset()
         env.render(mode='human')
 
-    current_total_rewards = max(0,env.reward_range[0]) #start with min val
+    current_total_rewards = max(0, env.reward_range[0])  # start with min val
     rewards_history = []
     mean_rewards_history = []
     print(f'Env:{env_id}')
 
-    for episode in range(1,episodes+1):
+    for episode in range(1, episodes + 1):
         state = env.reset()
         done = False
         total_rewards = 0
@@ -72,7 +70,7 @@ if __name__ == '__main__':
             state = state_
 
         rewards_history.append(total_rewards)
-        mean_episodes_num = min(last_episodes_to_mean,episode)
+        mean_episodes_num = min(last_episodes_to_mean, episode)
         mean_rewards = np.mean(rewards_history[-mean_episodes_num:])
         if episode >= mean_episodes_num:
             mean_rewards_history.append(mean_rewards)
@@ -86,7 +84,8 @@ if __name__ == '__main__':
 
     plt.rcParams["figure.figsize"] = (16, 5)
     plt.plot(rewards_history, zorder=1, label='Rewards')
-    plt.plot(list(range(99, len(mean_rewards_history) + 99)), mean_rewards_history, zorder=2, label='Mean over 100 episodes')
+    plt.plot(list(range(99, len(mean_rewards_history) + 99)), mean_rewards_history, zorder=2,
+             label='Mean over 100 episodes')
     plt.xlabel('Episode')
     plt.ylabel('Reward')
     plt.title('Reward per episode')

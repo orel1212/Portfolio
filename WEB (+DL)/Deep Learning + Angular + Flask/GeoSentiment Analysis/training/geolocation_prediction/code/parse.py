@@ -14,7 +14,7 @@ def parse_tweets(filename):
             if json_tweet["coordinates"] is not None:
                 tweet.append(json_tweet["text"])
                 tweet.append(json_tweet["user"]["description"])
-                tweet.append(json_tweet["user"]["name"])#used to be screen name         
+                tweet.append(json_tweet["user"]["name"])  # used to be screen name         
                 tweet.append(json_tweet["user"]["location"])
                 tweet.append(json_tweet["lang"])
                 tweet.append(json_tweet["user"]["lang"])
@@ -25,16 +25,16 @@ def parse_tweets(filename):
                     tweet.append("und")
                 tweet.append(json_tweet["created_at"])
                 # [longitude, latitude]
-                lon = json_tweet["coordinates"]["coordinates"][0] 
+                lon = json_tweet["coordinates"]["coordinates"][0]
                 lat = json_tweet["coordinates"]["coordinates"][1]
-                coordinates.append((lat,lon))
+                coordinates.append((lat, lon))
                 dataset.append(tweet)
             else:
                 filtered_tweets += 1
         labels = rg.search(coordinates)
 
         for i, label in enumerate(labels):
-            dataset[i].insert(0,label["cc"])
+            dataset[i].insert(0, label["cc"])
 
     print("filtered_tweets: ", filtered_tweets)
     print("added_tweets: ", len(dataset))
@@ -48,30 +48,26 @@ def get_categories_labels(filename, categories_list):
         for json_tweet in file:
             tweet = []
             json_tweet = json.loads(json_tweet)
-            if json_tweet["coordinates"] is not None: 
+            if json_tweet["coordinates"] is not None:
                 categories_list[0].add(json_tweet["lang"])
                 categories_list[1].add(json_tweet["user"]["lang"])
                 if json_tweet["user"]["time_zone"] is not None:
-                    categories_list[2].add(json_tweet["user"]["time_zone"])   
-                # [longitude, latitude]
-                lon = json_tweet["coordinates"]["coordinates"][0] 
+                    categories_list[2].add(json_tweet["user"]["time_zone"])
+                    # [longitude, latitude]
+                lon = json_tweet["coordinates"]["coordinates"][0]
                 lat = json_tweet["coordinates"]["coordinates"][1]
-                coordinates.append((lat,lon))
+                coordinates.append((lat, lon))
             else:
                 filtered_tweets += 1
         labels = rg.search(coordinates)
-        
+
         for label in labels:
             categories_list[3].add(label["cc"])
+
 
 def save_to_json(save_path, data):
     with open(save_path, 'w') as outfile:
         json.dump(data, outfile)
-
-
-
-
-
 
 
 print("Press 1 to create the categories list\nPress 2 to parse the datasets")
@@ -116,12 +112,12 @@ if get_categories_flag:
     tweet_lang_list.sort()
     time_zone_list = list(time_zone_set)
     time_zone_list.sort()
-    
-    save_to_json("../datasets/wnut/country_list",country_list)
-    save_to_json("../datasets/wnut/user_lang_list",user_lang_list)
-    save_to_json("../datasets/wnut/tweet_lang_list",tweet_lang_list)
-    save_to_json("../datasets/wnut/time_zone_list",time_zone_list)
-    
+
+    save_to_json("../datasets/wnut/country_list", country_list)
+    save_to_json("../datasets/wnut/user_lang_list", user_lang_list)
+    save_to_json("../datasets/wnut/tweet_lang_list", tweet_lang_list)
+    save_to_json("../datasets/wnut/time_zone_list", time_zone_list)
+
     print("done saving lists")
 
 else:
@@ -133,9 +129,7 @@ else:
 
     test_file = path + "test.tweet.output.json"
     save_test_path = "../datasets/wnut/test_set"
-    
-    save_to_json(save_train_path,parse_tweets(training_file))
-    save_to_json(save_valid_path,parse_tweets(valid_file))
-    save_to_json(save_test_path,parse_tweets(test_file))
 
-
+    save_to_json(save_train_path, parse_tweets(training_file))
+    save_to_json(save_valid_path, parse_tweets(valid_file))
+    save_to_json(save_test_path, parse_tweets(test_file))

@@ -64,10 +64,10 @@ class Qlearning():
         saved_q_funcs.append(self.q_table.copy())
         return saved_q_funcs, rewards, num_steps
 
+
 env = gym.make('FrozenLake-v0')
 np.random.seed(1)
 env.seed(1)
-
 
 agent = Qlearning(env=env,
                   learning_rate=0.1,
@@ -98,6 +98,3 @@ plt.ylabel("Number of steps")
 plt.title("Average num of steps to the goal per episode")
 plt.savefig("avg_steps_to_goal.png")
 plt.show()
-
-
-

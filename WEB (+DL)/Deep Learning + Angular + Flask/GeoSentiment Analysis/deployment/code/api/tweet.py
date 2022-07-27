@@ -1,6 +1,6 @@
 class Tweet:
 
-    def __init__(self, tweet_json, is_demo = False):
+    def __init__(self, tweet_json, is_demo=False):
         self.is_demo = is_demo
         self.tid = tweet_json["id_str"]
         self.country_prediction = None
@@ -16,7 +16,7 @@ class Tweet:
         self.posting_time = tweet_json["created_at"]
         self.time_zone = tweet_json["user"]["time_zone"]
 
-        if tweet_json["place"] is not None and tweet_json["place"]["country_code"] != "" :
+        if tweet_json["place"] is not None and tweet_json["place"]["country_code"] != "":
             self.has_location = True
             self.country_prediction = tweet_json["place"]["country_code"]
         else:
@@ -42,7 +42,6 @@ class Tweet:
     def set_country(self, country):
         self.country_prediction = country
 
-
     def __str__(self):
         msg = "tid: " + self.tid + "\n"
         msg += "content_sentiment: " + self.content_sentiment + "\n"
@@ -62,11 +61,9 @@ class Tweet:
 
     def serialize(self):
         return {
-                'text' : self.content,
-                'sentiment' : self.sentiment,
-                'country_prediction' : self.country_prediction,
-                'created_at' : self.posting_time,
-                'tweet_lang' : self.tweet_lang
+            'text': self.content,
+            'sentiment': self.sentiment,
+            'country_prediction': self.country_prediction,
+            'created_at': self.posting_time,
+            'tweet_lang': self.tweet_lang
         }
-
-
