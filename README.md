@@ -2,6 +2,11 @@
 ## Many project and mini-projects based on multipile languages and technologies
 Including Deep Learning (e.g., Pytorch, Tensorflow, Keras, Chainer), Reinforcement Learning, Python, C, C++.
 (Also: .NET(C#), Java, Javascript and Angular)
+## Folder Tree
+Deep Learning -> Transformers, CaptchaCracking, etc<br>
+Reinforcement Learning -> A3C,Soft AC, DQN, DDQN, etc<br>
+WEB (+DL) -> Deep Learning + Angular + Flask -> GeoSentiment%20Analysis, etc<br>
+Languages -> C, CPP, Java, Python, etc<br>
 ### Examples
 1. NLP question answering (sequence modeling) based on Transformers <br> 
 [Click Here](https://github.com/orel1212/MyWorks/tree/main/Deep%20Learning/Transformers/NLP_Sequence_modeling_Original_Transformer) <br>
