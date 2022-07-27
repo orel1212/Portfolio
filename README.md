@@ -5,7 +5,7 @@ Including Deep Learning (e.g., Pytorch, Tensorflow, Keras, Chainer), Reinforceme
 ## Folder Tree
 Deep Learning -> Transformers, CaptchaCracking, etc<br>
 Reinforcement Learning -> A3C,Soft AC, DQN, DDQN, etc<br>
-WEB (+DL) -> Deep Learning + Angular + Flask -> GeoSentiment%20Analysis, etc<br>
+WEB (+DL) -> Deep Learning + Angular + Flask -> GeoSentiment Analysis, etc<br>
 Languages -> C, CPP, Java, Python, etc<br>
 ### Examples
 1. NLP question answering (sequence modeling) based on Transformers <br> 
