@@ -1,6 +1,7 @@
 from PIL import Image
 from torchvision import transforms
 from matplotlib import pyplot as plt
+import numpy as np
 import os
 
 DEST_PATH = "./images/"
