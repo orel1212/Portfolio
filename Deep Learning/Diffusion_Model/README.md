@@ -14,5 +14,5 @@ running notebook of the code of the train and sample via ipynb
 run the ipynb as wanted and configure the hyperparameters
 
 ## Algorithm
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/Wasserstein_GAN/WGAN_Algo.png)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/Diffusion_Model/train_and_sample.png)
 
