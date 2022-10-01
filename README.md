@@ -3,7 +3,7 @@
 Including Deep Learning (e.g., Pytorch, Tensorflow, Keras, Chainer), Reinforcement Learning, Python, C, C++.
 (Also: .NET(C#), Java, Javascript and Angular)
 ## Folder Tree
-Deep Learning -> Transformers, CaptchaCracking, etc<br>
+Deep Learning -> Transformers, Wasserstein_GAN, Diffusion_Model, CaptchaCracking, etc<br>
 Reinforcement Learning -> A3C,Soft AC, DQN, DDQN, etc<br>
 WEB (+DL) -> Deep Learning + Angular + Flask -> GeoSentiment Analysis, etc<br>
 Languages -> C, CPP, Java, Python, etc<br>
