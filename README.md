@@ -21,9 +21,9 @@ Languages -> C, CPP, Java, Python, etc<br>
 6. DQN, DDQN and Actor-crtitics algos (A3C,Soft AC, etc) for known toy example environments (e.g., Cart-Pole, Acrobot, etc)<br>
 [Click Here](https://github.com/orel1212/MyWorks/tree/main/Reinforcement%20Learning) <br>
 7. User Level Rootkit - WIN API C++<br>
-[Click Here](https://github.com/orel1212/MyWorks/tree/main/CPP/UserlevelRootKit) <br>
+[Click Here](https://github.com/orel1212/MyWorks/tree/main/General%20-%20programming%20languages/CPP/UserlevelRootKit) <br>
 8. DNS Resolver Producer-Consumer C++<br>
-[Click Here](https://github.com/orel1212/MyWorks/tree/main/CPP/DNSProducerConsumer) <br>
+[Click Here](https://github.com/orel1212/MyWorks/tree/main/General%20-%20programming%20languages/CPP/DNSProducerConsumer) <br>
 <br>
 And many more...
  
