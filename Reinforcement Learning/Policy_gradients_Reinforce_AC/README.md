@@ -1,17 +1,17 @@
 # Policy gradients algorithms implementation for 'CartPole-v1' gym environment
 ## Reinforce
 ### Results (loss in each training step and the total reward of each episode)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce_AC/%E2%80%8F%E2%80%8Freinforce_results.PNG)
 ### How To Run
 run ./policy_gradients.py
 ## Reinforce with baseline (V func)
 ### Results (loss in each training step and the total reward of each episode)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Freinforce_baseline_results.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce_AC/%E2%80%8F%E2%80%8Freinforce_baseline_results.PNG)
 ### How To Run
 run ./policy_gradients_with_baseline.py
 ## Actor Critic
 ### Results (loss in each training step and the total reward of each episode)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce/%E2%80%8F%E2%80%8Factor_critic.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Reinforcement%20Learning/Policy_gradients_Reinforce_AC/%E2%80%8F%E2%80%8Factor_critic.PNG)
 ### How To Run
 run ./actor_critic.py
 
