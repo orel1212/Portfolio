@@ -24,6 +24,6 @@ Next, we converted the results with SVD with 100 features, getting the features 
 Finally, we enriched the data with some statistical features, namely mean, std and median.  <br>
 
 #### Architecture
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/Detect%20MasqueradersCommands/%E2%80%8F%E2%80%8Fclassifiers.PNG)
+![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/Detect%20Masqueraders%20Commands/%E2%80%8F%E2%80%8Fclassifiers.PNG)
 
 
