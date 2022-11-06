@@ -22,5 +22,5 @@ running notebook of the code of the test
 full implementation of the transformer with GPT2 Byte-pair tokenizer
 
 ## Example
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/Transformers/NLP_Sequence_modeling_Original_Transformer/example.png)
+![alt tag](https://github.com/orel1212/Portfolio/blob/main/Deep%20Learning/Transformers/NLP_Sequence_modeling_Original_Transformer/example.png)
 

@@ -20,5 +20,5 @@ loss plot and noise images helper functions
 run the command python3 wasserstein_gan.py
 
 ## Algorithm
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/Deep%20Learning/Wasserstein_GAN/WGAN_Algo.png)
+![alt tag](https://github.com/orel1212/Portfolio/blob/main/Deep%20Learning/Wasserstein_GAN/WGAN_Algo.png)
 

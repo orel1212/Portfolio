@@ -11,11 +11,11 @@
 ## Race conidition (worm food) mitigated via Monitor
 
 
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/General%20-%20programming%20languages/Java/Aquarium_DesignPatterns/%E2%80%8F%E2%80%8Faquarium.PNG)
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/General%20-%20programming%20languages/Java/Aquarium_DesignPatterns/%E2%80%8F%E2%80%8Finfo.PNG)
+![alt tag](https://github.com/orel1212/Portfolio/blob/main/General%20-%20programming%20languages/Java/Aquarium_DesignPatterns/%E2%80%8F%E2%80%8Faquarium.PNG)
+![alt tag](https://github.com/orel1212/Portfolio/blob/main/General%20-%20programming%20languages/Java/Aquarium_DesignPatterns/%E2%80%8F%E2%80%8Finfo.PNG)
 
 ## Food - worm
-![alt tag](https://github.com/orel1212/MyWorks/blob/main/General%20-%20programming%20languages/Java/Aquarium_DesignPatterns/%E2%80%8F%E2%80%8Ffood.PNG)
+![alt tag](https://github.com/orel1212/Portfolio/blob/main/General%20-%20programming%20languages/Java/Aquarium_DesignPatterns/%E2%80%8F%E2%80%8Ffood.PNG)
 
 
 ## How To Run
