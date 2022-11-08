@@ -9,22 +9,22 @@
 
 
 // matrix and shared memory size 
-const size_t N = 1 << 20;
+const size_t DIM = 1 << 20;
 const size_t SHARED_MEM_SIZE = 1 << 20;
 
 // Check result on the CPU
-void verify_CPU_GPU_results(std::vector<size_t> &first, std::vector<size_t> &second, std::vector<size_t> &result);
-__global__ void matrixMultiplicationCUDA(const size_t *first, const size_t *second, size_t *output);
+void verify_CPU_GPU_results(std::vector<size_t> &first, std::vector<size_t> &second, std::vector<size_t> &result, size_t &dim);
+__global__ void matrixMultiplicationCUDA(const size_t *first, const size_t *second, size_t *output, size_t &dim);
 
 
 int main() {
   // size of matrix (bytes)
-  size_t bytes = N * N * sizeof(size_t);
+  size_t bytes = DIM * DIM * sizeof(size_t);
 
   // CPU vectors
-  std::vector<size_t> h_first(N * N);
-  std::vector<size_t> h_second(N * N);
-  std::vector<size_t> h_result(N * N);
+  std::vector<size_t> h_first(DIM * DIM);
+  std::vector<size_t> h_second(DIM * DIM);
+  std::vector<size_t> h_result(DIM * DIM);
 
   // Initialize matrices
   std::generate(h_first.begin(), h_first.end(), []() { return rand() % 100; });
@@ -42,19 +42,19 @@ int main() {
 
   size_t THREADS = 32;
   // blocks per grid dims
-  size_t BLOCKS = N / THREADS;
+  size_t BLOCKS = DIM / THREADS;
 
   dim3 threads(THREADS, THREADS);
   dim3 blocks(BLOCKS, BLOCKS);
 
   // kernel
-  matrixMultiplicationCUDA<<<blocks, threads>>>(d_first, d_second, d_output);
+  matrixMultiplicationCUDA<<<blocks, threads>>>(d_first, d_second, d_output, DIM);
 
   // Copy back to the host
   cudaMemcpy(h_result.data(), d_output, bytes, cudaMemcpyDeviceToHost);
 
   // Check result
-  verify_CPU_GPU_results(h_first, h_second, h_result);
+  verify_CPU_GPU_results(h_first, h_second, h_result, DIM);
 
   std::cout << "Success Computation CPU vs GPU!" << std::endl ;
 
@@ -67,22 +67,22 @@ int main() {
 }
 
 // Check result on the CPU
-void verify_CPU_GPU_results(std::vector<size_t> &first, std::vector<size_t> &second, std::vector<size_t> &result) {
-  for (int i = 0; i < N; i++) {
-    for (int j = 0; j < N; j++) {
+void verify_CPU_GPU_results(std::vector<size_t> &first, std::vector<size_t> &second, std::vector<size_t> &result, size_t &dim) {
+  for (int i = 0; i < dim; i++) {
+    for (int j = 0; j < dim; j++) {
       // For every element in the row-col pair
       size_t accumulate = 0;
-      for (int k = 0; k < N; k++) {
-        accumulate += first[i * N + k] * second[k * N + j];
+      for (int k = 0; k < dim; k++) {
+        accumulate += first[i * dim + k] * second[k * dim + j];
       }
 
       // Check CPU vs GPU
-      assert(accumulate == result[i * N + j]);
+      assert(accumulate == result[i * dim + j]);
     }
   }
 }
 
-__global__ void matrixMultiplicationCUDA(const size_t *first, const size_t *second, size_t *output) {
+__global__ void matrixMultiplicationCUDA(const size_t *first, const size_t *second, size_t *output, size_t &dim) {
   // Compute each thread's row and column index
   size_t row = blockIdx.y * blockDim.y + threadIdx.y;
   size_t col = blockIdx.x * blockDim.x + threadIdx.x;
@@ -95,11 +95,11 @@ __global__ void matrixMultiplicationCUDA(const size_t *first, const size_t *seco
   size_t accumulate = 0;
 
   // Sweep tile across matrix
-  for (int i = 0; i < N; i += blockDim.x) {
+  for (int i = 0; i < dim; i += blockDim.x) {
     // Load in elements for this tile
-    sm_first[threadIdx.y * blockDim.x + threadIdx.x] = a[row * N + i + threadIdx.x];
+    sm_first[threadIdx.y * blockDim.x + threadIdx.x] = a[row * dim + i + threadIdx.x];
     sm_second[threadIdx.y * blockDim.x + threadIdx.x] =
-        b[i * N + threadIdx.y * N + col];
+        b[i * dim + threadIdx.y * dim + col];
 
     // Wait for both shared_mems to be loaded
     __syncthreads();
@@ -117,5 +117,5 @@ __global__ void matrixMultiplicationCUDA(const size_t *first, const size_t *seco
   }
 
   // Write back results
-  c[row * N + col] = accumulate;
+  c[row * dim + col] = accumulate;
 }
